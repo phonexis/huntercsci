@@ -36,6 +36,8 @@ def locate2(l,value):
         return l.index(value)
     else:
         return -1
+def locate_for(l,value):
+    for i in range(len(l)
 
 def count(l,value):
     i = 0
@@ -53,6 +55,9 @@ def reverse(l):
         reversed.append(l[i])
         i -= 1
     return reversed
+der reverse_for(l):
+    for i in range(len(l)-1,-1,-1):
+        
 
 ##def r2():
 ##    reversed = []
@@ -87,4 +92,16 @@ print(isIncreasing(l))
 
 #FOR LOOP
 # for v in sequence:
-#a sequence is a list or string as of right now 
+#a sequence is a list or string as of right now
+for i in [1, 5, "Hello"]:
+    print(i)
+for i in "Hello World":
+    print(i)
+for i in range(5):
+    print(i)
+for i in range(5,15):
+    print(i)
+for i in range(5,15,2):
+    print(i)
+for i in range(5,15,-1):
+    print(i)
