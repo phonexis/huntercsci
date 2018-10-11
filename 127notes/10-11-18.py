@@ -29,15 +29,62 @@ def locate(l,value):
 #        print(value,i,l[i])
         i+=1
     return found_index
-l = build_random_list(15,100)
-print(l)
-print(locate(l,10))
-print(locate(l,l[4]))
+
 
 def locate2(l,value):
     if value in l: #n time/linear time = you do something an n amount of times
         return l.index(value)
     else:
         return -1
+
+def count(l,value):
+    i = 0
+    found_count = 0
+    while i < len(l):
+        if l[i] == value:
+            found_count = found_count +1
+        i = i +1
+    return found_count
+
+def reverse(l):
+    reversed = []
+    i = len(l) - 1
+    while i >= 0:
+        reversed.append(l[i])
+        i -= 1
+    return reversed
+
+##def r2():
+##    reversed = []
+##    i = 0
+##    while i < len(l):
+
+def isPalindrome(l):
+    l2 = reverse(l)
+    return l == l2
+
+def isIncreasing(l):
+    increasing = True
+    i = 0
+    while i < len(l):
+        if l[i] >= l[i+1]:
+            increasing = False
+            break
+        i = i + 1
+    return increasing
+
+l = build_random_list(15,100)
+l2 = build_random_list(200,50)
+print(l)
+print(locate(l,10))
+print(locate(l,l[4]))
 print(locate2(l,10))
 print(locate2(l,l[4]))
+print(l2)
+print(count(l2,l2[4]))
+print(reverse(l))
+print(isIncreasing(l))
+
+#FOR LOOP
+# for v in sequence:
+#a sequence is a list or string as of right now 
