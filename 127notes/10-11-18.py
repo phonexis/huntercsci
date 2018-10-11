@@ -37,7 +37,12 @@ def locate2(l,value):
     else:
         return -1
 def locate_for(l,value):
-    for i in range(len(l)
+    found_index = -1
+    for i in range(len(l)):
+        if l[i] == value:
+            found_index =
+            break
+    return found_index
 
 def count(l,value):
     i = 0
