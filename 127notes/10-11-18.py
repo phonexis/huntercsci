@@ -40,7 +40,7 @@ def locate_for(l,value):
     found_index = -1
     for i in range(len(l)):
         if l[i] == value:
-            found_index =
+            found_index = i
             break
     return found_index
 
