@@ -57,13 +57,20 @@ def mymap(f,l):
         result.append(f(item))
     return result
 
-def cube:
+def cube(n):
     return n*n*n
 def is_name(word):
     return word[0] == word[0].upper()
 sentence = "when shall we three meet again"
-wl=sentance.split()
-
-pl_sentence = " ".join(mymap(piglatinfy,sentence.split()))
-
+wl=sentence.split()
 spacestring = "hello"
+for item in sentence.split():
+    print(item)
+    
+NOUNS= ["car","dog","hammer"]
+        
+def func_that_uses_NOUNS():
+    global NOUNS # now i can use the NOUNS variable
+    return NOUNS
+
+print(func_that_uses_NOUNS())
