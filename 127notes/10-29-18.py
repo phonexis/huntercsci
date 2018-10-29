@@ -36,7 +36,7 @@ def mode(l):
     msf_freq = freq(l,l[0])
     msf_index = 0
     for i in range(len(l)):
-        test_freq = freq(l,l[i])
+        test_freq = freq(l,l[i]) #hidden complexity
         if test_freq>msf_freq:
             #print("FOUND NEW POSSIBLE MODE:")
             #print("old mode: ",msf_value,"old_freq: ",msf_freq,"old_location: ",msf_index)
@@ -45,6 +45,7 @@ def mode(l):
             msf_index = i
             msf_freq = test_freq
     return msf_value
+
 l = build_random_list(30,100)
 li = index_largest(l)
 print(l)
@@ -60,13 +61,26 @@ l_new = build_random_list(30,100)
 #RUN TIME ANALYSIS-HOW FAST MY STUFF ILL RUN
 #SPACE ANALYSIS- HOW MUCH SPACE OR DISK SPACE I ENED FOR MY ALGORITHM
 #LINEAR ALGORITHM (predictable(y=x)) => N -> N (spec -> does this many things)
+#As my loop get larger, it's going to become slower(predictably)
+#be careful of loops in loops because it slows down run time
 #python is one of the slowest programming languages known to mankind
-base_size = 10000
-for i in range(1,7):
-    new_l = build_random_list(10**i,100)
-    start_time = int(round(time.time() * 1000))
-    m = mode(l_new)
-    running_time = int(time.time() * 1000 - start_time)
-    print("Len: ",len(l_new),"mode: ",m,"running time: ",running_time)
+##base_size = 10000
+##for i in range(1,7):
+##    new_l = build_random_list(10**i,100)
+##    start_time = int(round(time.time() * 1000))
+##    m = mode(l_new)
+##    running_time = int(time.time() * 1000 - start_time)
+##    print("Len: ",len(l_new),"mode: ",m,"running time: ",running_time)
 #frequency is a linear operation/component for each item in mode
-    
+#an algorithm that has a loop within a loop is O(N^2)
+l1 = build_random_list(30,100)
+def fast_mode(l,max_value):
+    tallies = []
+    for i in range(max_value):
+        tallies.append(0)
+    print(tallies)
+    for item in l1:
+        tallies[item] = tallies[item] + 1
+    print(l1)
+    print(tallies)
+print(fast_mode(l1,10))
