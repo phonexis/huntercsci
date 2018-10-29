@@ -17,9 +17,34 @@ def index_largest(l):
 def freq(l,item):
     count = 0
     for i in l:
-        if i ==tem:
+        if i == item:
             count +=1
     return count
+
+def req2(l,item):
+    count = 0
+    for i in range(len(l)):
+        if l[i] == item:
+            count += 1
+    return count
+
+def mode(l):
+    """
+    Look at current item, check it, move to the next
+    """
+    msf_value = l[0]
+    msf_freq = freq(l,l[0])
+    msf_index = 0
+    for i in range(len(l)):
+        test_freq = freq(l,l[i])
+        if test_freq>msf_freq:
+            #print("FOUND NEW POSSIBLE MODE:")
+            #print("old mode: ",msf_value,"old_freq: ",msf_freq,"old_location: ",msf_index)
+            #print("new mode: ",l[i],"new_freq: ",test_freq,"new_location: ",i)
+            msf_value = l[i]
+            msf_index = i
+            msf_freq = test_freq
+    return msf_value
 l = build_random_list(30,100)
 li = index_largest(l)
 print(l)
@@ -28,3 +53,13 @@ l[20]=5000
 l[25]=5000
 li = index_largest(l)
 print(li,l[li])
+mode_test_list = [9,3,3,8,2,8,6,7,8,4,8]
+print(mode(mode_test_list))
+l_new = build_random_list(30,100)
+for i in range(1,4):
+    print(l_new)
+    m = mode(l_new)
+    start_time = int(round(time.time() * 1000))
+    running_time = int(time.time() * 1000 - start_time)
+    new_l = build_random_list(10**i,100)
+    print("Len: ",len(l_new),"mode: ",m)
