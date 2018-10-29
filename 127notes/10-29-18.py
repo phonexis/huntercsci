@@ -60,6 +60,7 @@ l_new = build_random_list(30,100)
 #RUN TIME ANALYSIS-HOW FAST MY STUFF ILL RUN
 #SPACE ANALYSIS- HOW MUCH SPACE OR DISK SPACE I ENED FOR MY ALGORITHM
 #LINEAR ALGORITHM (predictable(y=x)) => N -> N (spec -> does this many things)
+#python is one of the slowest programming languages known to mankind
 base_size = 10000
 for i in range(1,7):
     new_l = build_random_list(10**i,100)
@@ -67,3 +68,5 @@ for i in range(1,7):
     m = mode(l_new)
     running_time = int(time.time() * 1000 - start_time)
     print("Len: ",len(l_new),"mode: ",m,"running time: ",running_time)
+#frequency is a linear operation/component for each item in mode
+    
