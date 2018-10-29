@@ -56,10 +56,14 @@ print(li,l[li])
 mode_test_list = [9,3,3,8,2,8,6,7,8,4,8]
 print(mode(mode_test_list))
 l_new = build_random_list(30,100)
-for i in range(1,4):
-    print(l_new)
-    m = mode(l_new)
-    start_time = int(round(time.time() * 1000))
-    running_time = int(time.time() * 1000 - start_time)
+
+#RUN TIME ANALYSIS-HOW FAST MY STUFF ILL RUN
+#SPACE ANALYSIS- HOW MUCH SPACE OR DISK SPACE I ENED FOR MY ALGORITHM
+#LINEAR ALGORITHM (predictable(y=x)) => N -> N (spec -> does this many things)
+base_size = 10000
+for i in range(1,7):
     new_l = build_random_list(10**i,100)
-    print("Len: ",len(l_new),"mode: ",m)
+    start_time = int(round(time.time() * 1000))
+    m = mode(l_new)
+    running_time = int(time.time() * 1000 - start_time)
+    print("Len: ",len(l_new),"mode: ",m,"running time: ",running_time)
