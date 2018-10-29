@@ -1,0 +1,11 @@
+h moves the cursor one character to the left.
+j moves the cursor down one line.
+k moves the cursor up one line.
+l moves the cursor one character to the right.
+0 moves the cursor to the begining of the line.(zero)
+$ moves the cursor to the end of the line.
+w move forward one word.
+b move backward one word.
+G move to the end of the file.
+gg move to the beginning of the file.
+`. move to the last edit.`

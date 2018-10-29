@@ -52,7 +52,6 @@ def fast_mode(l,max_value):
         tallies.append(0)
     for item in l:
         tallies[item] = tallies[item] + 1
-
     li = index_largest(tallies)
     return li
 
@@ -86,7 +85,7 @@ for i in range(1,7):
      m = fast_mode(l,100)
      running_time = int(round(time.time() * 1000)) - start_time
      print("Len: ",len(l), " mode: ",m, "milliseconds: ", running_time)
-    
+
 ##
 ##import time
 ##import random
