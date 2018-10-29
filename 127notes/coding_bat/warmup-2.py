@@ -20,4 +20,5 @@ def array_front9(array):
         if i == 9:
             count+=1
     return count
+
 print(array_front9([1,9,9,3,4,9]))
