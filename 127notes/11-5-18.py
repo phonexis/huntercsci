@@ -39,3 +39,36 @@ for k in sorted(people):
 print("--------------------")
 for k,v in sorted(people.items()):
     print(k, ' is ',v['age'])
+
+import random
+
+names = ['lisa','bart','marge','homer','barney','moe','carl','smithers']
+
+def generate_votes(name,number_votes):
+    votes = []
+    for i in range(number_votes):
+        votes.append(random.choice(names))
+    print(votes)
+    
+def winner(names,votes):
+    tallies = {}
+    for n in names:
+        tallies[n] = 0
+    print(tallies)
+    
+    for vote in votes:
+        tallies[vote] = tallies[vote]+1
+    final_votes = tallies.values()
+    print(final_votes)
+    max_vote_count = max(tallies.values())
+    print(tallies)
+    print(max_vote_count)
+    
+    winners = []
+    for k,v in tallies.items():
+        if v== max_vote_count:
+            winners.append(k)
+    print(winners)
+votes = generate_votes(names,30)
+
+print(winner(names,generate_votes(names,30)))
