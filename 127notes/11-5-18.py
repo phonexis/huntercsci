@@ -36,3 +36,6 @@ for k in people:
 print("----------------")
 for k in sorted(people):
     print(k," is ", people[k]['age']," years old")
+print("--------------------")
+for k,v in sorted(people.items()):
+    print(k, ' is ',v['age'])
