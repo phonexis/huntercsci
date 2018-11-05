@@ -74,3 +74,5 @@ def winner(names,votes):
 votes = generate_votes(names,30)
 
 print(winner(names,generate_votes(names,30)))
+
+#assignment use dictionary to revise apples,lady, and madlibs
