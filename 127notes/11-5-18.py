@@ -63,14 +63,15 @@ def winner(names,votes):
     final_votes = tallies.values()
     print(final_votes)
     max_vote_count = max(tallies.values())
-##    print(tallies)
-##    print(max_vote_count)
+    print(tallies)
+    print(max_vote_count)
     
     winners = []
     for k,v in tallies.items():
         if v== max_vote_count:
             winners.append(k)
-#    print(winners)
+        
+    print(winners)
 votes = generate_votes(names,30)
 
 print(winner(names,generate_votes(names,30)))
