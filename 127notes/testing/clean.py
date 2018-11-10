@@ -34,5 +34,5 @@ def clean(s):
             continue
     return result
 
-#print(testing("/home/fang/fall-2018-127/classcode/dictionaries/macbeth.txt"))
-print(testing("/home/fang/fall-2018-127/classcode/dictionaries/moby.txt"))
+print(testing("/home/fang/fall-2018-127/classcode/dictionaries/macbeth.txt"))
+#print(testing("/home/fang/fall-2018-127/classcode/dictionaries/moby.txt"))
