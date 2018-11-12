@@ -8,7 +8,7 @@ def build_word_counts(string):
 def testing(filename):
     f = open(filename)
     s = f.read()
-    print(s)
+##    print(s)
     cleaned = clean(s)
     f.close()
     return build_word_counts(cleaned)
@@ -33,4 +33,5 @@ def clean(s):
     return result
 
 print(testing("/home/fang/fall-2018-127/classcode/dictionaries/macbeth.txt"))
+print(testing("/home/fang/fall-2018-127/classcode/dictionaries/moby-small.txt"))
 ##print(testing("/home/fang/fall-2018-127/classcode/dictionaries/moby.txt"))
