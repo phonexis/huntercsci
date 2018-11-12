@@ -13,8 +13,6 @@ def testing(filename):
     f.close()
     return build_word_counts(cleaned)
 
-
-
 newfilename = "/home/fang/fall-2018-127/classcode/dictionaries/macbeth.txt"
 n = open(newfilename)
 o = n.readlines()
@@ -29,7 +27,7 @@ def clean(s):
             result = result + " "
     for letter in result:
         if letter in punct:
-            result = result + s.replace(punct,'')
+            result = result + s.replace(letter,'')
         else:
             continue
     return result
