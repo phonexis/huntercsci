@@ -13,8 +13,6 @@ def clean_data(s):
             continue
     return result
 
-    return result
-
 def next(string):
     d={}
     s = string.split()
