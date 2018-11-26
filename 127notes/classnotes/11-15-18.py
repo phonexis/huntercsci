@@ -87,11 +87,10 @@ def gen_text(wl,number,tuple):
     return ' '.join(text)
 
 
-filename="/home/zamansky/gh/fall-2018-127/classcode/dictionaries/moby-small.txt"
+filename="/home/fang/fall-2018-127/classcode/dictionaries/moby-small.txt"
 
 f = open(filename)
 s = f.read()
-story = gen_text(wl,100,s.split()[10])
 #print(story)
 #words_uncleaned = build_word_counts(s)
 #print(words_uncleaned)
@@ -105,7 +104,7 @@ cleaned_string = clean_data(s)
 
 
 
-filename="/home/zamansky/gh/fall-2018-127/classcode/dictionaries/moby-small.txt"
+filename="/home/fang/fall-2018-127/classcode/dictionaries/moby-small.txt"
 
 f = open(filename)
 s = f.read()
@@ -113,7 +112,7 @@ s = clean_data(s)
 slist = s.split()
 wl = build_word_lists(s)
 print(wl)
-prit(gen_text(wl,100,(slist[0],slist[1])))
+print(gen_text(wl,100,(slist[0],slist[1])))
 
 #words_uncleaned = build_word_counts(s)
 #print(words_uncleaned)
