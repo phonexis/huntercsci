@@ -45,7 +45,7 @@ def decode(encoded):
         result = rsult +item[0]*item[1]
     return result
 
-composite_scores = {['A','E','I','O','U','L','N','R','S','T']:1, }
+composite_scores = {['A','E','I','O','U','L','N','R','S','T']:1}
 def score1(word,scores):
     score = 0
     for letter in word:
@@ -63,3 +63,6 @@ def score2(word,scores_raw):
     for letter in word:
         score = score+scores[letter]
     return score
+##Python = scripting and interpreter language (doesn't deal with memory/made for quick writing)
+##C++ = lower level and compiler language (runs much faster because it doesn't translate/industrial strength)
+## ___.cpp == C++ files
