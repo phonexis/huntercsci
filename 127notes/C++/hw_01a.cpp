@@ -11,8 +11,6 @@ int main() {
   int big = 99;
   int eval;
   int guess;
-
-  guess = 49;
   
   std::cout << "Please enter a number from 0-99. ";
   std::cin >> input;
