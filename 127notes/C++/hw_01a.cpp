@@ -6,28 +6,26 @@ For each guess, the cmputer will print the guess and ask the user if the number 
 lower(-1), or correct(0)*/
 
 int main() {
-  int i;
+  int input;
   int smol = 0;
   int big = 99;
   int eval;
   int guess;
 
-  guess = (big+smol)/2
+  guess = 49;
   
   std::cout << "Please enter a number from 0-99. ";
-  std::cin >> i;
-  std::cout << "Current guess=" << guess << std::endl ;
+  std::cin >> input;
   std::cout << "Higher? = 1 Lower? = -1 Correct? = 0: ";
   std::cin >> eval;
  
   while (eval != 0){
+    guess = (big+smol) / 2;
     if (eval == 1){
       big = guess;
-      guess = guess + ;
     }
     else {
       smol = guess;
-      guess = guess + ;
     }
     std::cout << "New guess=" << guess << std::endl;
     std::cout << "Higher? = 1 Lower? = -1 Correct = 0: ";
