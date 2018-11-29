@@ -12,7 +12,8 @@ int main()
   std::cout << "i=" << i << "\n";
   /* this would return 7 because it's returning an int, not a float*/
 
-  d = d/4.2
-    std::cout << "d=" << d << "\n";
-  return 0
+  d = d/4.2;
+   std::cout << "d=" << d << "\n";
+   
+   return 0
 }
