@@ -16,19 +16,25 @@ int main(){
   // get a guess from the user
   // see if the guess is too low/high/just right
   int guesses = 0;
-  int guess = answer - 1;
-  while(guess !=answer){
-  std::cout << answer << "\n";
-  std::cout << "Please enter a guess: ";
-  std::cin >> guess;
-    if (guess > answer){
-      std::cout << "You guess too high";
+  int guess = 50;
+  int isCorrect;
+  while(isCorrect == -1){
+   //std::cout << answer << "\n";
+  //std::cout << "Please enter a guess: ";
+  //std::cin >> guess;
+    if (isCorrect == -1){
+      guess = guess + (100-guess)/2;
+	//std::cout << "You guess too high";
     }
     else if (guess < answer){
-      std::cout << "You guessed too low";
+      guess = guess-(guess/2);
+	//std::cout << "You guessed too low";
     }
-      std::cout << "Please enter a guess: ";
-      std:: cin >> guess;
+    std::cout << "I'm guessing: " << guess << "\n";
+    std::cout << "0=right, -1=too low, 1=too high\n";
+    std::cin >> isCorrect;
+    //std::cout << "Please enter a guess: ";
+    //std:: cin >> guess;
       guesses++;
       /*
 In C++, there is a ++ before(pre increment) and ++ after(post increment) operands [same for --]
