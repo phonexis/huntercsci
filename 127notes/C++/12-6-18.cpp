@@ -44,6 +44,12 @@ int add2(int a, int b){ //test with double
   return c;
 }
 
+int add4(int a, int b,  int c , int d){
+  int x = add2(a,b);
+  int y = add2(c,d);
+  return add2(x,y);
+}
+
 std::string times(std::string s, int t){
   std::string result = "";
   for (int i = 0; i<t; ++i){
@@ -54,6 +60,7 @@ std::string times(std::string s, int t){
 
 void printGreeting(std::string name){
   std::cout << "Hello " << name << "\n";
+  return;
   // a voidfunction doesn't reutnr anything but you can include a return but it send back a value 
 }
 
@@ -66,6 +73,10 @@ int main(){
 
   std::cout << add2(100.5,300) << "\n"; //special test cases returns 400 under int and 400.5 under double
   std::cout << times("Hello_",5) << "\n"; //prints hello out 5 times
+
+  printGreeting("Stan");
+
+  std::cout << add4(1,2,10,20) << "\n";
   
   return 0;
 }
