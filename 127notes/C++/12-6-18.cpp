@@ -52,6 +52,10 @@ std::string times(std::string s, int t){
   return result;
 }
 
+void printGreeting(std::string name){
+  std::cout << "Hello " << name << "\n";
+  // a voidfunction doesn't reutnr anything but you can include a return but it send back a value 
+}
 
 int main(){
   int a = 10, b =20;
