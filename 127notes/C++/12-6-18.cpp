@@ -38,11 +38,20 @@ you dont need {} for one lie for and while loops
 
 #include <iostream>
 
-int add2(int a, int b){
+int add2(int a, int b){ //test with double
   int c;
   c = a + b;
   return c;
 }
+
+std::string times(std::string s, int t){
+  std::string result = "";
+  for (int i = 0; i<t; ++i){
+    result = result +s;
+  }
+  return result;
+}
+
 
 int main(){
   int a = 10, b =20;
@@ -50,7 +59,12 @@ int main(){
   std::cout << x << "\n";
   x = add2(100,500);
   std::cout << x << "\n";
+
+  std::cout << add2(100.5,300) << "\n"; //special test cases returns 400 under int and 400.5 under double
+  std::cout << times("Hello_",5) << "\n"; //prints hello out 5 times
+  
   return 0;
 }
 //(return type)-> ___  name(parameter,sts::string) {}
 //main is the function that runs. echo $? is a special shell function that returns the function
+//C++ has the ability to override opperators
