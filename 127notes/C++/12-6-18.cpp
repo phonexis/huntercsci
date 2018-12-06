@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 
 #include <cstdlib>
@@ -30,8 +31,26 @@ int main(){
 
 
 //There are different versions of C++ just as there is python3
-/*
 print "hello" vs print("Hello")
 -std=c++14
+you dont need {} for one lie for and while loops
 */
 
+#include <iostream>
+
+int add2(int a, int b){
+  int c;
+  c = a + b;
+  return c;
+}
+
+int main(){
+  int a = 10, b =20;
+  int x = add2(a,b);
+  std::cout << x << "\n";
+  x = add2(100,500);
+  std::cout << x << "\n";
+  return 0;
+}
+//(return type)-> ___  name(parameter,sts::string) {}
+//main is the function that runs. echo $? is a special shell function that returns the function
