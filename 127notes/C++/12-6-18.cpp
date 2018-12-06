@@ -68,6 +68,14 @@ void printGreeting(std::string name){
   // a voidfunction doesn't reutnr anything but you can include a return but it send back a value 
 }
 
+int fact(int n){
+  int product = 1;
+  for (int i = n; i > 1;i--){
+    product = product*i;
+  }
+  return product;
+}
+
 int main(){
   int a = 10, b =20;
   int x = add2(a,b);
