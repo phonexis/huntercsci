@@ -38,16 +38,20 @@ you dont need {} for one lie for and while loops
 
 #include <iostream>
 
-int add2(int a, int b){ //test with double
-  int c;
-  c = a + b;
-  return c;
-}
+int add2(int a, int b);//declaration of fnction add2(which is below the add4 function calling add2)
+//you also don't need a and b. all you need to know is the types(int) not the names
 
 int add4(int a, int b,  int c , int d){
   int x = add2(a,b);
   int y = add2(c,d);
   return add2(x,y);
+}
+
+
+int add2(int a, int b){ //test with double
+  int c;
+  c = a + b;
+  return c;
 }
 
 std::string times(std::string s, int t){
@@ -83,3 +87,4 @@ int main(){
 //(return type)-> ___  name(parameter,sts::string) {}
 //main is the function that runs. echo $? is a special shell function that returns the function
 //C++ has the ability to override opperators
+//recursion is when a function runs itself
