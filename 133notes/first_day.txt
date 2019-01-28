@@ -11,5 +11,6 @@ projects ar enot being graded but you can ask z for help. z is only doing labs
 
 everything has to be exact
 
-Thrusday will be the first lab
+Thrusday will be the first lab (you're nto gonna need to write functions for this first lab)
+
 
