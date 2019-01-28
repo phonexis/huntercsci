@@ -1,0 +1,15 @@
+classroom.github- 
+	there is a link to a repo (Spring-2019/235-assignment-1-zamansky
+		-the instructions will be in the readme file in the repo
+		-travis-ci.com
+		-separate repo for assignments
+
+Assignments are not going to be graded on gradescope for now
+projects ar enot being graded but you can ask z for help. z is only doing labs
+
+[continuous integration]
+
+everything has to be exact
+
+Thrusday will be the first lab
+
