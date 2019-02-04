@@ -1,8 +1,0 @@
-#include <iostream>
-
-int maint(){
-  std::cout << "Tomatoes" << std::endl;
-  std::cout << "Grapes" << std::endl;
-  std::cout << "Oranges" << std::endl;
-  return 0;
-}
