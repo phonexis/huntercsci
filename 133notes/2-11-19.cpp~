@@ -1,0 +1,5 @@
+/*
+return is returning it back to the caller
+if you just wanted to print out results opposed to returning, you would use a void function. you could still use an int function but its return is unpredictable.
+std::cerr (Standard Error)
+*/

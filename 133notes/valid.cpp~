@@ -1,0 +1,18 @@
+#include <iostream>
+
+int valid(int a){
+  int number = 0;
+  while (a>0 && a<100){
+    std::cout << "Please enter an integer: ";
+    std::cin >> number;
+  }
+  else {
+    std::cout << "Please enter an integer: ";
+    std::cin >> number;    
+  }
+}
+
+int main(){
+  
+  return 0;
+}
