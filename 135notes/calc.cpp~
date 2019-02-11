@@ -1,0 +1,39 @@
+#include <iostream>
+
+int main(){
+  char c; //input
+  std::string nums = ""; //string to int conversion
+  int total = 0 ; // sum
+  bool add = true; // check for completion of loop and first num
+  
+  while (std::cin >> c){
+    if (int(c)<47 || int(c)>57){ //if char not numbers
+      if (add){ //if true
+	total += std::stoi(nums); //add
+	nums = ""; //reset
+      }
+      else { //if false
+	total -= std::stoi(nums); //subtract
+	nums = ""; //reset
+      }
+    }
+    else if(c == '-'){ //if minus
+      add = false; //false to subtract
+    }
+    else  if (c =='+'){ //if plus
+      add = true; //true to add
+    }
+    nums += c; //append char to string
+  }
+  if (add){ //if true
+    total += std::stoi(nums); //add
+    nums = ""; //append char to string
+  }
+  else { //if false
+    total -= std::stoi(nums); //subtract
+    nums = ""; //append char to string
+  }
+  
+  std::cout << total << std::endl; //print
+  return 0;
+}
