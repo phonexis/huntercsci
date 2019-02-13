@@ -1,35 +1,47 @@
-/*
-Name: Emily Fang
-Instructor: Mike Zamansky
-*/
-
 #include <iostream>
 
-int main(){
-  int num, total, squared; //num is an int class
-  char sign; // + and - are of char class
-  std::cin >> num >> sign; //the first number input is assigned to total
-  if(sign =='^'){ //if minus sign
-    total = num*num; //subtract
-  }
+using namespace std;
+
+int main() {
+  int num, squared;
+  char sign;
+  bool truthval = true;
+  int total;
   
-  while (std::cin >> sign >> num) //takes in the two inputs
+  std::cin >> total;
+
+  while(std::cin >> sign)
     {
-      squared = num*num;
-      if(sign =='+'){ //if plus sign
-	total += num; //add
+      if(sign = '^') {
+	squared = num*num;
+	if (truthval == true){
+	  total -= num;
+	  total += squared;
+	}
+	else {
+	  total +=num;
+	  total -= squared;
+	}
       }
-      else if(sign =='-'){ //if minus sign
-	total -= num; //subtract
-      }
-      else if(sign == '^'){
-	total += num*num;
-      }
-      else if(sign == ';'){ //if semicolon
-	std::cout << total << std::endl; //print total
-	total = num; //reset to new first number after the semicolon
-      }
+      else if (sign == '+')
+        {
+	  truthval = true; // positive
+	  std::cin >> num;
+	  total = total + num;
+        }
+      else if(sign == '-')
+        {
+	  truthval = false; // negative
+	  std::cin >> num;
+	  total -= num;
+        }
+      else if(sign == ';')
+	{
+	  std::cout << total << endl;
+	  std::cin >> num; //first number in each line 
+	  total = num;
+	  truthval = true;
+        }
     }
-  std::cout << total << std::endl; //print the last line
-  return 0;
+  return 0;   
 }
