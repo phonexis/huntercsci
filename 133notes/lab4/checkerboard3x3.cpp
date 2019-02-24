@@ -1,69 +1,98 @@
 #include <iostream>
 
-std::string columns(int width){
+std::string build1(int width){
+  std::string placehold;
   bool alt = true;
-  std::string row1, row2;
-  int count=0;
+  int count = 0;
   for (int col=0; col < width; col++){
     if (count < 3){
       if (alt == true) {
-	box += "*";
+	placehold += "*";
 	count += 1;
       }
       else {
-	box += " ";
+	placehold += " ";
 	count += 1;
       }
     }
     else if (count >= 3) {
       if (alt == false){
 	count = 1;
-	box += "*";
+	placehold += "*";
 	alt = true;
       }
       else {
 	count = 1;
-	box += " ";
+	placehold += " ";
 	alt = false;
       }
     }
   }
-  box += "\n";
+  return placehold;
 }
 
+std::string build2(int width){
+  std::string placehold;
+  bool alt = false;
+  int count = 0;
+  for (int col=0; col < width; col++){
+    if (count < 3){
+      if (alt == true) {
+	placehold += "*";
+	count += 1;
+      }
+      else {
+	placehold += " ";
+	count += 1;
+      }
+    }
+    else if (count >= 3) {
+      if (alt == false){
+	count = 1;
+	placehold += "*";
+	alt = true;
+      }
+      else {
+	count = 1;
+	placehold += " ";
+	alt = false;
+      }
+    }
+  }
+  return placehold;
+}
 
 std::string checker3x3(int width,int height){
   bool alt = true;
-  bool 
   std::string box;
-  int count;
+  std::string one = build1(width);
+  std::string two = build2(width);
+  int count = 0;
   for (int row=0; row<height; row++){
-    count = 0;
-    for (int col=0; col < width; col++){
-      if (count < 3){
-	if (alt == true) {
-	  box += "*";
-	  count += 1;
-	}
-	else {
-	  box += " ";
-	  count += 1;
-	}
+    if (alt == true && count <3){
+      box += one;
+      box += "\n";
+      count += 1;
+    }
+    else if (alt == false && count <3){
+      box += two;
+      box += "\n";
+      count += 1;
+    }
+    else {
+      if (alt ==true){
+	count = 1;
+	box += two;
+	box += "\n";
+	alt = false;
       }
-      else if (count >= 3) {
-	if (alt == false){
-	  count = 1;
-	  box += "*";
-	  alt = true;
-	}
-	else {
-	  count = 1;
-	  box += " ";
-	  alt = false;
-	}
+      else {
+	count = 1;
+	box += one;
+	box += "\n";
+	alt = true;
       }
     }
-    box += "\n";
   }
   return box;
 }
