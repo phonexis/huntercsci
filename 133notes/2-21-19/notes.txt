@@ -1,1 +1,13 @@
 C++ unit testing: catch, google testing
+
+main 	 	  	|main			|main.cpp
+			|			|
+			|			|
+funcs.cpp	  	|funcs.cpp		|funcs.cpp
+[tests go here]		|			|[Test_funcs.cpp]
+       	  		|			|
+test.cpp		|test.cpp		|test.cpp
+		 	|[Tests go here]	|
+
+YOu're not writing unit tests for the labs (coming up with all the tests)
+Only testing for correctness based on the lab instructions

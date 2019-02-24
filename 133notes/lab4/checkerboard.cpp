@@ -3,6 +3,7 @@
 std::string checker(int width,int height){
   bool alt = true;
   std::string box;
+
   for (int row=0; row<height; row++){
     for (int col=0; col < width; col++){
       if (alt == true){
@@ -13,6 +14,12 @@ std::string checker(int width,int height){
 	box += " ";
 	alt = true;
       }
+    }
+    if (row%2 ==1){
+      alt = true;
+    }
+    else {
+      alt = false;
     }
     box += "\n";
   }

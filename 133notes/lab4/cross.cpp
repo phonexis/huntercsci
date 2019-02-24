@@ -4,12 +4,9 @@
 std::string cross(int size){
   std::string box;
   int left = 0, right = size-1;
-  for (int row = 0; row < size/2; row++){
+  for (int row = 0; row < size; row++){
     for (int i=0;i<size;i++){ //in each column
-      if (i == left){
-	box += "*";
-      }
-      else if (i == right){
+      if (i == left || i== right){
 	box += "*";
       }
       else {
@@ -20,28 +17,12 @@ std::string cross(int size){
     left += 1;
     right -= 1;
   }
-  for (int row = 0; row < size/2; row++){
-    left -= 1;
-    right += 1;
-    for (int i=0;i<size;i++){ //in each column
-      if (i == left){
-	box += "*";
-      }
-      else if (i == right){
-	box += "*";
-      }
-      else {
-	box += " ";
-      }
-    }
-    box += "\n";
-  }
-  return box;  
+  return box;
 }
 
 int main(){
   int size;
-  std::cout << "Input size: ";
+  std::cout << "Input size: " << std::endl;
   std::cin >> size;
 
   std::cout << cross(size);

@@ -3,7 +3,7 @@
 std::string trapezoid(int width, int height){
   std::string box;
   int left = 0, right = width-1;
-  if (height > width/2){
+  if ((height*2)-1 > width){
     return "Impossible shape";
   }
   else {
@@ -37,9 +37,9 @@ std::string trapezoid(int width, int height){
 
 int main(){
   int width, height;
-  std::cout << "Input trapezoid width: ";
+  std::cout << "Input trapezoid width: " << std::endl;
   std::cin >> width;
-  std::cout << "Input trapezoid height: ";
+  std::cout << "Input trapezoid height: " << std::endl;
   std::cin >> height;
 
   std::cout << trapezoid(width,height);
