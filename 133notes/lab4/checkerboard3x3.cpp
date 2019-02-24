@@ -39,6 +39,30 @@ std::string checker3x3(int width,int height){
   int count;
   for (int row=0; row<height; row++){
     count = 0;
+    for (int col=0; col < width; col++){
+      if (count < 3){
+	if (alt == true) {
+	  box += "*";
+	  count += 1;
+	}
+	else {
+	  box += " ";
+	  count += 1;
+	}
+      }
+      else if (count >= 3) {
+	if (alt == false){
+	  count = 1;
+	  box += "*";
+	  alt = true;
+	}
+	else {
+	  count = 1;
+	  box += " ";
+	  alt = false;
+	}
+      }
+    }
     box += "\n";
   }
   return box;
