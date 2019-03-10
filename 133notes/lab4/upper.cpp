@@ -1,6 +1,6 @@
 #include <iostream>
 
-std::string lower(int length){
+std::string upper(int length){
   int count = 1;
   int rows = length;
   std::string triangle;
@@ -23,6 +23,6 @@ int main(){
   std::cout << "Input side length: ";
   std::cin >> length;
 
-  std::cout << "Shape: \n" << lower(length);
+  std::cout << "Shape: \n" << upper(length);
   return 0;
 }
