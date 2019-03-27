@@ -1,0 +1,19 @@
+#include <iostream>
+
+int main(){
+  int num;
+  std::cout << "Enter an integer: ";
+  std::cin >> num;
+
+  if (num%2==1){
+    std::cout << "Odd";
+  }
+  else if (num == 0){
+    std::cout << "Zero";
+  }
+  else {
+    std::cout << "Even";
+  }
+  return 0;
+}
+  

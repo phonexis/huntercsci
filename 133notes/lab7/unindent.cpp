@@ -13,29 +13,29 @@ std::string removeLeadingSpaces(std::string line){
       cleaned=true;
       newline+=line[i];
     }
-    else{
+    else if(cleaned==true){
       newline+=line[i];
     }
   }
+  newline+="\n";
   return newline;
 }
 
 int countChar(std::string line, char c){
-  int opened=0;
-  int closed=0;
+  int counter=0;
   for(int i=0;i<line.length();i++){
-    char c=line[i];
-    if((int)c==123){
-      opened+=1;
-    }
-    else if((int)c==125){
-      opened-=1;
+    char thing=line[i];
+    if((int)thing==int(c)){
+      counter+=1;
     }
   }
+  return counter;
 }
 
 int main(){
-  std::cout << "       int x = 1;  " << std::endl;
-  std::cout << removeLeadingSpaces("       int x = 1;  ");
+  std::string lines;
+  while(getline(std::cin,lines)){
+    std::cout << removeLeadingSpaces(lines);
+  }
   return 0;
 }

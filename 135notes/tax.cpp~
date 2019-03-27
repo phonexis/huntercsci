@@ -1,0 +1,17 @@
+#include <iostream>
+
+std::string tax(bool single, int income)
+{
+  if (single == true){
+
+  }
+  else {
+
+  }
+  
+}
+
+int main(){
+
+  return 0;
+}

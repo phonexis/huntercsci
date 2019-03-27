@@ -1,0 +1,38 @@
+An object file will always be based on its .cpp file and whatever .h files it includes.
+Flags are smaller tags that connect with terminal functions such as -o in g++ -o
+
+1) start with main
+2) factor out larger functions
+3) g++ -MM *cpp > Makefile
+4) clean up the Makefile, add in flags
+
+**Advantage of being able to just type make**
+
+Test driven development: comes from a practice called extreme programming, which was a hot way of programming at startups (ie pair programming)
+-YOu dont start your program at frist
+-you think about how you're gonna test your program first
+EX: piglatinfy(word)
+    -pl(bad)
+    -pl(good)
+    -pl("b")
+    -pl("a")
+    -pl("reallylong")
+    -pl("has SPACES")
+    -pl("")
+The problem with this is that testing can only confirm the prescence of bugs, not the abscence. ALl you know is that your tests pass, but there could potentially be other cases that will break your code. On a postitive nte, your tests are in the code so you can confirm that your code does work.
+
+pythondoctest/pyunit (for python testing)
+
+doctest:
+it's a unit testing framework and it's just an include file
+
+by default:
+labs are privated. even if the lab isn't due, commit. it is to your benefit to push
+
+YOu'll have to include doctest into your own directory
+TEST_CASE("name"){
+	check(function(input) == result)
+	//basically you put in all yur tests, then you write your functions
+}
+
+Next class we're gonna cover doctest 

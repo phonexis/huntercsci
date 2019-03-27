@@ -1,0 +1,2 @@
+An object file will always be based on its .cpp file and whatever .h files it includes.
+Flags are smaller tags that connect with terminal functions such as -o in g++ -o

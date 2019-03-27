@@ -1,0 +1,5 @@
+Refactoring (it's like factoring in software engineering)
+To avoid parsing a loop, you can create a separate function.
+   In the case of lab4, you can the lines for each row separately
+FOR LAB4:
+have a funciton that makes a line of all asterisks. FOr the other tasks, changing the strings at certain indexes to save trouble for yourself.

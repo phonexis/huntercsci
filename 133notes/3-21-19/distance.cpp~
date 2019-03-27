@@ -1,0 +1,3 @@
+double distance(double a[26], double b[26]){
+       return 0.0
+}

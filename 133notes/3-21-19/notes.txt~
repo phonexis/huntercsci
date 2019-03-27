@@ -1,0 +1,3 @@
+features for a laptop may be storage, memory, size, resolution, color, weight, o/s [all of these should be scaled to 0.0-1.0 or 1-100] (you want to change them such that they can be graphed meaningfully. you wants these to be scaled in a way such that they mean the same thing)
+
+distance formula can go to any dimensions. In math, we call a point a vectors(an array with two elements). A (x,y) point is a vector on 2 dimensions and (x,y,z) is a vecotr on 3 dimensions.
