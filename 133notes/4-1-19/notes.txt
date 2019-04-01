@@ -1,0 +1,7 @@
+when naming repos, avoid using special characters
+
+The hard part is collecting data with meaningful results
+
+Question answering system (example: google) is just statistics and data
+
+There's no intelligence of this data collected (are you gonna do it based on what is searched the most or what appears in the most searches?)

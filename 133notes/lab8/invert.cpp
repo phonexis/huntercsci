@@ -13,8 +13,8 @@ const int MAX_W = 512;
 void readImage(int image[MAX_H][MAX_W], int &height, int &width) {
   char c;
   int x;
-  ifstream instr;
-  instr.open("inImage.pgm");
+  ifstream instr; //open image
+  instr.open("inImage.pgm"); //open image
 
   // read the header P2
   instr >> c;
@@ -89,7 +89,8 @@ int main() {
 
   for(int row = 0; row < h; row++) {
     for(int col = 0; col < w; col++) {
-      out[row][col] = img[row][col];
+	out[row][col] = 255-img[row][col];
+      //std::cout << img[row][col] << std::endl;
     }
   }
 
