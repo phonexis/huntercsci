@@ -5,3 +5,21 @@ The hard part is collecting data with meaningful results
 Question answering system (example: google) is just statistics and data
 
 There's no intelligence of this data collected (are you gonna do it based on what is searched the most or what appears in the most searches?)
+
+people generally work backwards to find their errors to debug their own program
+what you'd do for other people is to read from the beginning as opposed to starting in the middle
+
+The important thing is what things can you do to help you find the answer:
+    One thing you can do is insert debug print statements but you need to have a some sort of marker to distinguish what lines are for debugging purposes.
+    Another thing you can do is 
+
+cout is buffered(memory builds up)
+cerr is a separate ouput stream that goes to console and it's not buffered. You can redirect the output because sometimes you dont want to pollute your cout
+
+ctrl xa (???? for what)
+
+postmortem programming
+
+if it is a memory related issue, it'll dictate when the error will or won't occur
+
+
