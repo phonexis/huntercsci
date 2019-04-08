@@ -44,3 +44,68 @@ int *a;
 a=new int[10]; this is going to give use 10 blocks of memory with each block large enough to hold an int. We can access this like an array
 
 a[i] <=> *(a+i) These are synonyms since it knows a is a pointer to a, move over by i. Look at the address of a and more over by i
+new is making a new block of memory.
+You want to free thatmemory using delete by the end of your program because not all operating systems will clear the memory for you
+
+The idea behind a struct(short for structure) is that one thing consisting of many subthings.
+class -> struct w/ associated functions
+In earlier languages, you had primatives. Parallel arrays (making an array for each data ex: 2 arrays for coordinate points (x,y) x being one array and y being another)
+
+struct vector{
+ int x;
+ int y;
+ std::string name;
+};
+
+int main(){
+ struct s s1;
+ s1.x=50;
+ s1.y=30;
+ s1.name="hello";
+
+ struct vector s2;
+ s2=s1; //copies over s1 into s2
+
+ s1.name="New Name";
+
+ struct vector *vp;
+ vp=&s1; //vp is the memory address of s1
+
+ /*
+ s1: x=50,y=30,name=hello
+ s2: x=50,y=30,name=hello
+ */
+ std::cout << *vp.name;//this is an error because struct vp is a pointer and name does not follow under that struct. and the . takes presedence over *
+ std::cout << (*vp).name; //this works
+
+ struct vector s3={2,20,"Theo"};
+ std::cout << s3.name << "\n";
+ std::string s="myname";
+ struct vector s4 = {x:10,y:100,name:"s"};
+ std::cout <<s4.name << "\n";
+
+ struct vector *vp2=new struct vector({1,2,"something"});
+ std::cout << vp2->name << "\n";
+ struct vector *vp3 = new struct vector;
+ vp3->name = "horatio";
+
+ std::cout << vp3->name << "\n";
+
+ delete vp;
+ delete vp2;
+ delete vp3;
+ return 0;
+}
+
+vp->name is the same as (*vp).name
+The arrows are a shorthand form.
+
+class c{
+ public:
+	int x;
+	std::string s;
+	int f(){ }
+
+};
+
+class c
