@@ -1,0 +1,46 @@
+ i(int)
+  1000
+  [97]
+
+int i=3; i has some address
+int *p; p is a pointed to an int that has a box of memory
+p=1000; put 1000 into this box. The value of p is now 1000
+
+ p(int)
+  1000
+ [1000]
+std::cout << p; //this line would return 1000
+
+* -> dereference
+& -> address of
+In C++, it is more difficultto create an int pointer
+
+Let i=value in the box; &=address of the box; *=the value in the box at the address
+
+//p=new int(7);
+std::cout << *p; //when you try to access this memory/the memory you don't have access to, you will get errors and these errors are unpredictable
+
+C++ compilers do not guarantee and initialization of 0 for variables
+
+if we just do p=new int, you're saying "I want a new block of memory to hold this" This is on the heap. Not the stack.
+This new int returns this new address
+
+int *p;
+p=new int;
+*p=10;
+p=new int(7);
+
+  p      ->    2000     ->    2000
+[2000]         [10]           [7]
+
+-MEMORY LEAKS-
+smart pointer makes it easier to not mess up memory.
+Rust/python/etc does memory management for you.
+
+Therefore, when you're done with p, you have to delete it (delete the memory address) such that this memory can be used again and a memory leak is prevented
+
+int i=97;
+int *a;
+a=new int[10]; this is going to give use 10 blocks of memory with each block large enough to hold an int. We can access this like an array
+
+a[i] <=> *(a+i) These are synonyms since it knows a is a pointer to a, move over by i. Look at the address of a and more over by i

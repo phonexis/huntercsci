@@ -1,0 +1,11 @@
+ i(int)
+  1000
+  [97]
+
+int i=3; i has some address
+int *p; p is a pointed to an int that has a box of memory
+p=1000; put 1000 into this box. The value of p is now 1000
+
+ p(int)
+  1000
+ [1000]
