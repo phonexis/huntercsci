@@ -74,7 +74,7 @@ void writeImage(int image[MAX_H][MAX_W], int height, int width) {
 }
 
 int main() {
-
+  
   int img[MAX_H][MAX_W];
   int h, w;
 
@@ -96,5 +96,5 @@ int main() {
 
   // and save this new image to file "outImage.pgm"
   writeImage(out, h, w);
-
+  
 }
