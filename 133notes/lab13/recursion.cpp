@@ -35,18 +35,21 @@ int sumArray(int *arr, int size){
 }
 
 bool isAlphanumeric(std::string s){
-  if(s.length()==0){
-    return true;
+  int index=0;
+  if(s.length()>0){
+    std::string newstr=s.substr(index+1,s.length()-1);
+    if(!isalpha(s[0]) && !isdigit(s[0])){
+      return false;
+    }
+    isAlphanumeric(newstr);
   }
-  else if(isalpha(s) || isdigit(s)){
-    return true;
-  }
-  return false;
+  return true;
 }
 
-int main(){
-  //printRange(-2,10);
-  //std::cout << sumRange(1,3) << " "; //<< sumRange(-2,10);
+
+  int main(){
+    //printRange(-2,10);
+    //std::cout << sumRange(1,3) << " "; //<< sumRange(-2,10);
   /*int size = 10;
   int *arr = new int[size]; // allocate array dynamically
   arr[0] = 12;
@@ -67,5 +70,8 @@ int main(){
   std::cout << "Sum is " << sum2 << std::endl;  // Sum is 34
 
   delete[] arr;         // deallocate it */
+  std::cout << isAlphanumeric("ABCD") << std::endl;        // true (1)
+  std::cout << isAlphanumeric("Abcd1234xyz") << std::endl; // true (1)
+  std::cout << isAlphanumeric("KLMN 8-7-6") << std::endl;  // false (0)
   return 0;
 }
