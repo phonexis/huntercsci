@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cctype>
 
 void printRange(int left, int right){
   if(right>=left){
@@ -34,23 +35,44 @@ int sumArray(int *arr, int size){
   return sum;
 }
 
+//PART D
 bool isAlphanumeric(std::string s){
-  int index=0;
-  if(s.length()>0){
-    std::string newstr=s.substr(index+1,s.length()-1);
-    if(!isalpha(s[0]) && !isdigit(s[0])){
-      return false;
-    }
-    isAlphanumeric(newstr);
+  if(s.length()==0){
+    return true;
   }
-  return true;
+  else if(!isalnum(s[0])){
+    //std::cout << s << std::endl;
+    return false;
+  }
+  return isAlphanumeric(s.substr(1,s.length()-1));
 }
 
 
-  int main(){
-    //printRange(-2,10);
-    //std::cout << sumRange(1,3) << " "; //<< sumRange(-2,10);
-  /*int size = 10;
+bool isparens(char c){
+  if(c==40 || c==41){
+    return true;
+  }
+  return false;
+}
+
+bool nestedParens(std::string s){
+  if(s.length()==0){
+    return true;
+  }
+  else if(isparens(s[0]) && isparens(s[s.length()-1])){
+    if(s[0]==40 && s[s.length()-1]==41){
+      return nestedParens(s.substr(1,s.length()-2));
+    }
+    return false;
+  }
+  return false;
+}
+
+
+int main(){
+  printRange(-2,10);
+  std::cout << sumRange(1,3) << " "; //<< sumRange(-2,10);
+  int size = 10;
   int *arr = new int[size]; // allocate array dynamically
   arr[0] = 12;
   arr[1] = 17;
@@ -69,9 +91,18 @@ bool isAlphanumeric(std::string s){
   int sum2 = sumArray(arr, 5); // Add up first five elements
   std::cout << "Sum is " << sum2 << std::endl;  // Sum is 34
 
-  delete[] arr;         // deallocate it */
+  delete[] arr;         // deallocate it 
   std::cout << isAlphanumeric("ABCD") << std::endl;        // true (1)
   std::cout << isAlphanumeric("Abcd1234xyz") << std::endl; // true (1)
   std::cout << isAlphanumeric("KLMN 8-7-6") << std::endl;  // false (0)
+  std::cout << nestedParens("((()))") << std::endl;      // true (1)
+  std::cout << nestedParens("()") << std::endl;          // true (1)
+  std::cout << nestedParens("") << std::endl;            // true (1)
+
+  std::cout << nestedParens("(((") << std::endl;         // false (0)
+  std::cout << nestedParens("(()") << std::endl;         // false (0)
+  std::cout << nestedParens(")(") << std::endl;          // false (0)
+  std::cout << nestedParens("a(b)c") << std::endl;       // false (0)
+
   return 0;
 }
