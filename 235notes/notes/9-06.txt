@@ -1,0 +1,24 @@
+Inheritance: ADTs & Templates
+
+Derived class inherits all public and protected members of base class
+Does not have access to base class private members
+
+Constructors: a class needs user-defined constructor if must initialize data members
+
+Base-class constructor always called before derived-class constructor
+If base class has only parameterized constructor, derived class must supply constructor that class base class explicitly.
+
+Destructors:
+Derived class destructor always causes base class destructor to be called implicitly and is called before the base class destructor
+
+Basic Inheritance: no runtime cost; In memory DerivedClass is simply BaseClass with extra members tacked on the end
+
+Abstract Data Type
+Data and Abstraction: Operations on data are central to most solutions
+Typically need to: organize data, add data, remove data, retrieve, ask questions about data, modify data
+Acollection of data (contianer) and a set of operators on the data
+In C++ member variables and member functions implement ADT
+Templates -> template<class T>
+ -Template classes do not compile so you should include that into your implementaiton file (main.cpp)
+
+Include the .cpp at the bottom of the interface
