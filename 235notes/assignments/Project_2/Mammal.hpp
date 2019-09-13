@@ -1,9 +1,18 @@
+#pragma once
 #include <iostream>
+#include "Animal.hpp"
+/*
+Name: Emily Fang
+CSCI 235
+Project_2
+*/
 
-class Mammal{
+class Mammal: public Animal{ //inherits publix members of Animal class
 public:
+  //Constructors
   Mammal();
   Mammal(std::string name, bool domestic = false, bool predator = false);
+  //Accessors
   bool hasHair() const;
   bool isAirborne() const;
   bool isAquatic() const;
@@ -11,6 +20,7 @@ public:
   bool hasFins() const;
   bool hasTail() const;
   int legs() const;
+  //Mutators
   void setHair();
   void setAirborne();
   void setAquatic();
@@ -18,7 +28,7 @@ public:
   void setFins();
   void setTail();
   void setLegs(int legs);
-private:
+private: //private members
   bool hair_;
   bool airborne_;
   bool aquatic_;
@@ -26,4 +36,4 @@ private:
   bool fins_;
   bool tail_;
   int legs_;
-}
+};

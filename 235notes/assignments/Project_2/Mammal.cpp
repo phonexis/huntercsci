@@ -1,12 +1,41 @@
 #include "Mammal.hpp"
+/*
+Name: Emily Fang
+CSCI 235
+Project_2
+*/
 
+//Constructor functions
 Mammal::Mammal(){
-
+  hair_=false;
+  airborne_=false;
+  aquatic_=false;
+  toothed_=false;
+  fins_=false;
+  tail_=false;
+  legs_=0;
 }
 Mammal::Mammal(std::string name, bool domestic, bool predator){
-
+  setName(name);
+  if(isDomestic()!=domestic){//if domestic status!=desired parameter change
+    setDomestic();//change it
+    //otherwise, it stays the same
+  }
+  else if(isPredator()!=predator){//if predator status!=desired parameter change
+    setPredator();//change it
+    //otherwise, it stays the same
+  }
+  hair_=false;
+  airborne_=false;
+  aquatic_=false;
+  toothed_=false;
+  fins_=false;
+  tail_=false;
+  legs_=0;
 }
-bool Mammaml::hasHair() const{
+
+//Functions that access private members
+bool Mammal::hasHair() const{
   return hair_;
 }
 bool Mammal::isAirborne() const{
@@ -27,6 +56,8 @@ bool Mammal::hasTail() const{
 int Mammal::legs() const{
   return legs_;
 }
+
+//Mutator functions
 void Mammal::setHair(){
   if(hair_==true){
     hair_=false;

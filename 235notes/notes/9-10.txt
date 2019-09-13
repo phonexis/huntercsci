@@ -1,1 +1,5 @@
 Array-based implementation
+We cannot change the parameters of a function in the project
+
+Recap: An ADT is a collection of data and a set of operations on the data. INterface specifies what ADT operations do, not how.
+An array is a fixed size contianer that has direct access to indexed location. You need to keep track of the number of elements in it
