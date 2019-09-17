@@ -1,0 +1,25 @@
+Node- chains of an item followed by a pointer to the next item
+
+getNext() will return the data member pointing to the next node
+
+Instantiate a new node and let a temp pointer point to it
+Let the next pointer of the new node point to the same node head_ptr_ points to
+Let head_ptr_ point to the new node
+temp_ptr=new node
+temp_ptr->next=head_ptr_ 
+head_ptr_=temp_ptr
+temp_ptr=nullptr
+
+Traversing the Chain:
+let a current pointer point to the first node in the chain
+whil(the current pointer is not the null pointer){
+"visit" the current node
+set the current pointer to the next pointer of the current node
+}
+
+Similarly getFrequencyof will traverse the chain and count frequency of an_entry
+
+Efficiency: no fixed number of steps; depends on location of an entry (you have to look at every node)
+
+WHAT SHOULD WE DO TO REMOVE?
+
