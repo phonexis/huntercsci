@@ -1,0 +1,14 @@
+Dynamic Variables
+Created at runtime in the memory heap using operator new
+
+Memory leaks occur when object is created in free store but program no longer has access to it. delete the pointer outside fo the function call and assign the pointer to nullptr
+
+Dangling pointers- pointer variable that no longer references a valid object
+
+Link-based implementation:
+Data Organization- place data within a node object and links nodes in a chain
+
+the headptr (head pointer) = if there is no headptr, then the chain is empty
+
+
+
