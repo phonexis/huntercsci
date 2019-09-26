@@ -1,0 +1,28 @@
+Assuming you have this pointer to the position, you can insert with "fixed" amount of work. The same applies for remove.
+
+double linked chain has nodes that has pointers to the nodes before and after as well as the stored value
+Linked::insert we have to consider inserting in the first and last nodes and inserting in the middle
+
+Pseudocode: instaniate new node to be inserted and set its value, obtain pointer to node at position 2, connect new node to chain by pointing to its next pointer to the node currently at position and its previous position pointer to the node at position->previous,reconnect the relevant nodes.
+
+Pseudocode to remove the node at position 1 in a doubly-linked list assuming that position follows 0 indexing:
+
+Fail-safe programming: what happens when preconditions are not met or input data is malformed?
+ -Do nothing -> rely on user to handle problem
+  -Return false - bool add(const T& newEntry);
+  -use sentinel value: return error codes -> rely on user to handle problem
+
+#include <cassert>
+assert(getPointerTo(position)!=nullptr);
+If assertion is false, program execution terminates, which is goo fro testing and debugging
+
+
+Exceptions: client might be able to recover from a violation or unexpected condtion
+Commmunicate Exception (error) to client
+
+try{
+	... //try to do this
+}
+catch{
+	... //if no possible then do this. code to handle the exception
+}
