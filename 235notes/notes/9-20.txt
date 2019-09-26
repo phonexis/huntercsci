@@ -1,0 +1,31 @@
+Dynamic memory allocation
+
+COPY CONSTRUCTOR:
+1)Initialize one object from another of the same type
+	     MyClass one;
+	     MyClass two = one; //make a copy of it when you instantiate two
+	     	     OR
+	     MyClass one;
+	     MyClass two(one); //Identical to the example above
+2)Copy an object to pass by value as an argument to a function
+       void MyFunction(MyClass arg){ //you're not passing a value, you're making a copy
+
+       }
+3)Copy and object to be returned by a function
+       MyClass MyFunction(){
+       	    MyClass mc;
+	    return mc;
+       }
+
+Deep vs Shallow Copy:
+The Shallow Copy would be like having two bags, one being a copy of a bag. However it isn't independent like a deep copy because it would share only the item count and headptr
+    Deep Copy: Would copy the linked chain with a new chain ptr.
+
+Overloaded Operator=
+	   MyClass one;
+	   //Stuff here
+	   MyClass two=one;
+	   	   IS DIFFERENT FROM:
+ 	   MyClass one;
+	   //Stuff here
+	   two=one;

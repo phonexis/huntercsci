@@ -5,6 +5,11 @@
 
 /** Implementation file for the class ArrayBag.
     @file ArrayBag.cpp */
+/*
+EMILY FANG
+CSCI 235
+PROJECT 3
+*/
 
 #include "ArrayBag.hpp"
 
@@ -45,12 +50,11 @@ void ArrayBag<T>::display() const
     {
       if(i==item_count_-1)
 	{
-	  std::cout << items_[item_count_] << "\n";
+	  std::cout << items_[i] << "\n";
 	}
-      else
-	{
-	  std::cout << items_[i] << ", ";
-	}
+      else{
+	std::cout << items_[i] << ", ";
+      }
     }
 }
 
@@ -63,10 +67,10 @@ void ArrayBag<T>::display() const
 **/
 
 template<class T>
-void operator+=(const ArrayBag<T>& a_bag){
-  for(int i=0;i<a_bag.getCurrentSize();i++)
+void ArrayBag<T>::operator+=(const ArrayBag<T>& a_bag){
+  for(int i=0;i<a_bag.item_count_;i++)
     {
-      add(a_bag.items_[i]); //why this ****************************
+      add(a_bag.items_[i]); 
     }
 }
 
@@ -77,12 +81,16 @@ void operator+=(const ArrayBag<T>& a_bag){
      @param a_bag to be subtracted from this (the calling) bag
      @post removes all data from items_ that is also found in a_bag
  */
-
-void operator-=(const ArrayBag<T>& a_bag)
+template<class T>
+void ArrayBag<T>::operator-=(const ArrayBag<T>& a_bag)
 {
-  for(int i=0;a_bag.getCurrentSize();i++)
+  for(int i=0;i<a_bag.item_count_;i++)
     {
-      remove(a_bag.items_[i]);
+      if(contains(a_bag.items_[i])) //if the items are shared
+	{
+	  remove(a_bag.items_[i]); //remove them
+	}
+      
     }
 }
 
@@ -93,9 +101,16 @@ void operator-=(const ArrayBag<T>& a_bag)
      @param a_bag to be intersected with this (the calling) bag
      @post items_ no longer contains data not found in a_bag
  **/
-void operator /=(const ArrayBag<T>& a_bag)
-{
-
+template<class T>
+void ArrayBag<T>::operator /=(const ArrayBag<T>& a_bag)
+{ 
+  for(int i=0;i<a_bag.item_count_;i++)
+    {
+      if(a_bag.contains(items_[i])==false) //if these items are not shared
+	{
+	  remove(items_[i]); //remove them
+	}
+    }
 }
 /**
    @return true if new_etry was successfully added to items_, false otherwise
@@ -226,3 +241,4 @@ int ArrayBag<T>::getIndexOf(const T& target) const
 
   return result;
 }  // end getIndexOf
+

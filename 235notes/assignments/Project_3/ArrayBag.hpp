@@ -5,6 +5,12 @@
 
 /** Header file for an array-based implementation of the ADT bag.
     @file ArrayBag.h */
+/*
+EMILY FANG
+CSCI 235
+PROJECT 3
+*/
+
 
 #ifndef ARRAY_BAG_
 #define ARRAY_BAG_
@@ -40,7 +46,7 @@ public:
   /**
      overloads public operator-= to implement Set Difference
   **/
-y  void operator-=(const ArrayBag<T>& a_bag);
+  void operator-=(const ArrayBag<T>& a_bag);
   /** 
       overloads public operator/= to implement set intersection
    **/
