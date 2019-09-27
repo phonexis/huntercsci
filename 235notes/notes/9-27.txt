@@ -1,0 +1,39 @@
+Abstract Class
+
+Polymorphism-occurs when there is a hierarchy of classes and they are related by inheritance
+ex:
+Base{ someMethod(); };
+Derivec{ someMethod() override };
+
+main(){
+Base* base_ptr = new Base;
+Base* derived_ptr = new Derived;
+//stuff here
+
+
+virtual function does have to be pure
+Superclass need not be abstract
+Late binding/dynamic binding refers to what normally happens when the virtual keyword is used in a method's declaration. C++ then creates a so-called virtual table, which is a look-up table for such functions that will always be consulted when they are called.
+
+pure virtual: we don't apply implementation to make it abstract
+virtual: the base class is not abstract anymore
+
+we only use override, virtual, or =0 in the class interface 
+When using pointers to base class, to let derived classes override functions in base class must make the base class's function virtual
+
+We can disallow in an inheritance chain:
+final specifier prevents inheritance and prevents deriving classes from overriding methods
+
+runtime costs of virtual functions:
+C++ maintinas virtual function tables that store pointers to each virtual function. Determine which function to call at execution time by looking up v-table of object being pointed to -> slower & extra space for v-tables
+
+Overhead->mark individual functions virtual to take advantage of polymorphism only when appropriate
+Fully polymorphic inheritance would be overkill in most cases
+
+
+RECAP
+Polymorphism->virtual functions
+pure vs nonpure virtual functions
+plymorphism with or without abstract classes
+override and final
+overhead
