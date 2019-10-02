@@ -37,3 +37,35 @@ pure vs nonpure virtual functions
 plymorphism with or without abstract classes
 override and final
 overhead
+
+Always make destuctors virtual
+Beware of slicing
+Beware of casting and use level most appropriate and safe for your situation
+
+What is an Abstract Class: has at least one function that doesn't have implementation
+
+Why Polymorphism:when we want to somehow access data from the same data structure. 
+When would you use it: 
+What problems does it solve:
+
+What does = 0 mean: (pure virtual) it won't have any implementation
+
+What is encapsulation: data members that are made private with access using public members
+
+what does it mean to override: same funciton with the same signature of a dervied class but with new implementation
+
+What is OOP: object oriented programming:way to organize your code where we don't jsut have functions calling functions but we have objects of classes. we can make as many objects as we want.
+
+What is an ADT: abstract data type:a data type/structure
+
+Why dynamic memory allocation:you might now know how much memory you need
+When would you use it:
+What problems does it solve:
+
+What does final mean:prevents inheritence and derived classes from overridign methods
+
+How is basic inheritance different from polymorphism:
+
+What is overhead in polymorphism:
+
+What is information hiding:
