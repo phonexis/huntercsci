@@ -2,7 +2,7 @@
 CSCI 235
 Project 1
 */
-
+#pragma once
 #include <iostream>
 
 class Animal{
@@ -23,6 +23,7 @@ public: //contains functions accessible to users
   void setName(std::string name); //changes the name
   void setDomestic(); //changes domestic_
   void setPredator(); //changes predator_
-  virtual void display() = 0; //displays the name and domestic and predator status
+  virtual void display() const = 0; //pure virtual function
+  //a function that must be overriden in a derived class and need not be defined
   friend bool operator==(const Animal& animalobj, const Animal& animalobj1); //overloads the == operator to compare two Animal objects to test if they are the samex
 };

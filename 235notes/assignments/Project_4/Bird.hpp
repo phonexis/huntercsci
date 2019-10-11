@@ -18,7 +18,7 @@ public:
   //Mutators
   void setAirborne();
   void setAquatic();
-  void display();
+  virtual void display() const override;
 private: //private members
   bool airborne_;
   bool aquatic_;

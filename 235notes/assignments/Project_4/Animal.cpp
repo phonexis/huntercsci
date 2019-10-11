@@ -55,7 +55,7 @@ void Animal::setPredator(){ //switches the predator status to false
   }
 }
 
-void Animal::display(){
+void Animal::display() const{
   //displays an Animal as a statement
   if(isDomestic()==true && isPredator()==true){
     std::cout << getName() << " is domestic and it is a predator" << std::endl;

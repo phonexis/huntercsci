@@ -1,0 +1,10 @@
+POLYMORPHISM
+
+upcasting: derived to base-automatically available through inheritance
+downcasting: base to derived
+
+static_cast checks at compile time that cast "makes sense"
+Allows: converting between primitive types like int or float and converting pointers or references of Dervied type to pointers ore references of Base type (ex: Derived* and Base*) when target is at least as const as the source. As well as, converting pointers or references of Base type to pointers or references of Derived type (ex: Base* and Derived*) where target is at least as const as the source
+
+dynamic_cast : If Base* did not point to Derived object, static_cast would succeed   e.g. access Derived data members not present in Base
+

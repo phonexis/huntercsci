@@ -1,12 +1,12 @@
 #pragma once
+#include <iostream>
 #include "Animal.hpp"
 /*
 Name: Emily Fang
 CSCI 235
 Project_2
 */
-
-class Mammal: public Animal{ //inherits publix members of Animal class
+class Mammal: public Animal{ //inherits public members of Animal class
 public:
   //Constructors
   Mammal();
@@ -27,7 +27,8 @@ public:
   void setFins();
   void setTail();
   void setLegs(int legs);
-  void display();
+  virtual void display() const override; //overrides base class's function
+  //virtual b/c the base class was pure virtual
 private: //private members
   bool hair_;
   bool airborne_;

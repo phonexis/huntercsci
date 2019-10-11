@@ -1,0 +1,19 @@
+Recursion: you need a base case to stop adn you need to be moving towards that base case
+
+SIMPLE TEMPLATE OF RECURSION
+if(problem is sufficiently simple){
+directly solve the problem
+do something/return the solution
+}
+else{
+split the prolem up into one or more smaller problems with the same structer as the original
+solve some or all of those smaller problems
+do something or combine results to return solution if necessary
+
+void writeBackwards(std::string s){
+siz_t length=s.size();
+if(s>length){
+std::cout << s.substr(length-1,1);
+writeBackwards(s.substr(0,length-1));
+}
+}

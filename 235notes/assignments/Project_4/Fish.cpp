@@ -37,48 +37,25 @@ void Fish::setVenomous(){
   }
 }
 
-void Fish::display(){
-  std::cout << getName() << " is ";
+void Fish::display() const{
+  //NEGATIVE LANGUAGE
+  std::string dom=" is not domestic";
+  std::string pre="is not a predator";
+  std::string veno="it is not venomous";
+
+  //CHANGES FROM NEGATIVE TO POSITIVE
   if(isDomestic()){
-    std::cout << "domestic, ";
-    if(isPredator()){
-      std::cout << "it is a predator\n";
-      if(isVenomous()){
-	std::cout << "and it is venomous.\n\n";
-      }
-      else{
-	std::cout << "and it is not venomous.\n\n";
-      }
-    }
-    else{
-	std::cout << "it is not a predator\n";
-	if(isVenomous()){
-	  std::cout << "and it is venomous.\n\n";
-	}
-	else{
-	  std::cout << "and it is not venomous.\n\n";
-	}      
-      }
+    dom=" is domestic";
   }
-  else{
-    std::cout << "not domestic, ";
-    if(isPredator()){
-      std::cout << "it is a predator\n";
-      if(isVenomous()){
-	std::cout << "and it is venomous.\n\n";
-      }
-      else{
-	std::cout << "and it is not venomous.\n\n";
-      }
-    }
-    else{
-	std::cout << "it is not a predator\n";
-	if(isVenomous()){
-	  std::cout << "and it is venomous.\n\n";
-	}
-	else{
-	  std::cout << "and it is not venomous.\n\n";
-	}      
-    }
+  if(isPredator()){
+    pre="it is a predator";
   }
+  if(isVenomous()){
+    veno="it is venomous";
+  }
+
+  //PRINT STATEMENTS
+  std::cout << getName() << dom << ", " << pre << "\n";
+  std::cout << "and " << veno << ".\n\n";
+
 }

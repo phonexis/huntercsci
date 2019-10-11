@@ -49,36 +49,28 @@ void Bird::setAquatic(){
     aquatic_=true;
   }
 }
-void Bird::display(){
-  std::cout << getName() << " is ";
+void Bird::display() const{
+  //NEGATIVE LANGUAGE
+  std::string dom=" is not domestic";
+  std::string pre="is not a predator";
+  std::string air="it is not airborne";
+  std::string aqua="it is not aquatic";
+
+  //CHANGES FROM NEGATIVE TO POSITIVE
   if(isDomestic()){
-    std::cout << "domestic and ";
-    if(isPredator()){
-      std::cout << "it is a predator,\n";
-      if(isAirborne()){
-	std::cout << "it is airborne and ";
-	if(isAquatic()){
-	  std::cout << "it is aquatic,\n\n";
-	}
-	std::cout << "it is not aquatic,\n\n";
-      }
-      std::cout << "it is not airborne and ";
-    }
-    std::cout << "is not a predator,\n";
+    dom=" is domestic";
   }
-  else {
-    std::cout << "not domestic and ";
-    if(isPredator()){
-      std::cout << "it is a predator,\n";
-      if(isAirborne()){
-	std::cout << "it is airborne and ";
-	if(isAquatic()){
-	  std::cout << "it is aquatic,\n\n";
-	}
-	std::cout << "it is not aquatic,\n\n";
-      }
-      std::cout << "it is not airborne and ";
-    }
-    std::cout << "is not a predator,\n";
+  if(isPredator()){
+    pre="it is a predator";
   }
+  if(isAirborne()){
+    air="it is airborne";
+  }
+  if(isAquatic()){
+    aqua="it is aquatic";
+  }
+
+  //PRINT STATEMENTS
+  std::cout << getName() << dom << " and " << pre << ",\n";
+  std::cout << air << " and " << aqua << ".\n\n";
 }

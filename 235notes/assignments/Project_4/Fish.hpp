@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include "Animal.hpp"
 /*
 Name: Emily Fang
@@ -15,7 +16,8 @@ public:
   bool isVenomous() const;
   //Mutators
   void setVenomous();
-  void display();
+  virtual void display() const override;
+  //virtual becuase the base class is
 private: //private members
   bool venomous_;
 };
