@@ -1,0 +1,25 @@
+More Recursion
+Reverse String:
+-single recursive call
+-Base case: stop => no return value
+Dictionary:
+-split problem into halves but solve only 1
+-Base case: stop => no return value
+Fractal Tree:
+-split problem into halves and solve both
+-Base case: stop => no return value
+Factorial:
+-single recursive cell
+-Base case: stop => ===================================finish this line
+
+Why/when we use recursion
+usually less efficient than iterative counterparts(we will see later in the course) b/c of te fnction calls allocaiton or repeat of work
+Inherent overhead associated with function calls
+Repeated recursive calls with same parameters
+Compilers can optimize tail-recursive (recursive call is the last statement in the function) functions to be iterative
+Sometimes logic of iterative solution can be very complex in comparison to recursive solution
+
+
+The eight queens problem: place 8 queens on the board such that no queen is on the same row, column, or diagonal
+-Place a queen in the 1st row, 1st column => this is going to eliminate  a lot of positions and as we place the queens down in the next rows in the highest columns, we get stuck
+-BACKTRACKING: we go backwards and we try a different position that isn't under attack to place a queen. REPEAT until all queens are placed.
