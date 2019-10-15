@@ -40,3 +40,16 @@ Implementation detail
 Find permutations
 -group by each first letter/Lck the first letter -> permute the rest (recursive decision)
 -A decision/trace tree: making decisions down the tree by locking a letter
+-swapping letter and permuting the rest
+
+void permuteStr(std::string str, int l, int r){
+if(l==r){
+std::cout << str << std::endl;
+else{
+for(int i=0;i<=r;i++){
+std::swap(str[l],str[i]);
+permuteStr(str,l+1,r);
+std::swatp(str[l],str[i]);
+}
+}
+}
