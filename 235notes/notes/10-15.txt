@@ -23,3 +23,20 @@ Sometimes logic of iterative solution can be very complex in comparison to recur
 The eight queens problem: place 8 queens on the board such that no queen is on the same row, column, or diagonal
 -Place a queen in the 1st row, 1st column => this is going to eliminate  a lot of positions and as we place the queens down in the next rows in the highest columns, we get stuck
 -BACKTRACKING: we go backwards and we try a different position that isn't under attack to place a queen. REPEAT until all queens are placed.
+  -place queen on column i. Recursively solve on columns (i+1) to 8
+  -communicate to callng funciton that there are no options left, it should try something else
+
+Algorithm Design
+-Identify the problem
+-Come up with a procedure that will lead to a solution
+-Independent of implementation detail
+Model your problem/data
+-represent the problem to support your algorithm
+Implement solution
+-Language
+-Data structure
+Implementation detail
+
+Find permutations
+-group by each first letter/Lck the first letter -> permute the rest (recursive decision)
+-A decision/trace tree: making decisions down the tree by locking a letter
