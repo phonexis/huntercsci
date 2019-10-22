@@ -40,6 +40,10 @@ Big-O: upper bound
        T(n) is O(f(n))
        if there exist constants k and n_0 such that for all n >= n_0 T(n)<=kf(n)
        Grows no faster than f(n)
+       "LONG TERM" BEHAVIOR
+       	     Compare behavior of 2 algorithms
+	     Analyze algorithm with growing input
+	
 
 Omega: lower bound
 
