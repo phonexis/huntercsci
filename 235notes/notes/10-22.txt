@@ -1,0 +1,52 @@
+Algorithm Efficiency
+A good solution is Correct
+We measure execution time with the number of "steps" or "operations" as a function of the size of the input
+Runtime is highly sensitive to hardware
+
+Operations= K_0 + n(K_1 + K_2 + K_3 + K_4 + ...)
+
+bool linearSearch(const std::string& str, char ch){
+for(inti=0;i<std::string.length();i++){
+	if(str[i]==ch){
+		return true;
+	}
+}
+return false;
+}
+
+Execution completes in at most: k_0 * n+k_1 operations (in the worst case) -> k_0=some constant # of operations repeated inside the loop
+
+Types of Analysis
+Best case analysis: running time under best input - not reflective of overall performance
+
+Average case analysis: assumes equal probability of input (usually not the case)
+
+Expected case analysis: assumes probability of occurrence of input is known or can be estimated, and if it were possible may be too expensive
+
+Worst case analysis: running time under worst input, gives upper bound, it can't get worse, good for sleeping well at night!
+
+Don't need to explicitly compute the constants k_i
+Dominant term is sufficient to explain
+Big-O Notation: ignores evereything except dominant term/describes overall behavior
+EX: T(n)=4n + 4 = O(n)
+    T(n)=n^2 + 35n +5 = O(n^2)
+    T(n)=2n^3 +98n^2 +210 = O(n^3)
+    Let T(n)=running time; n=size of the input
+
+    T(n) is O(f(n)) if it grows no faster than f(n)
+    More formally, T(n) is O(f(n)) if there exists constants k and n_0 such that for all n>= n_0; T(n) <= kf(n)
+
+Big-O: upper bound
+       T(n) is O(f(n))
+       if there exist constants k and n_0 such that for all n >= n_0 T(n)<=kf(n)
+       Grows no faster than f(n)
+
+Omega: lower bound
+
+
+Theta: tight bound
+T(n) is theta(f(n))
+Grows at the same rate as f(n): iff both T(n) is O(f(n))
+
+
+
