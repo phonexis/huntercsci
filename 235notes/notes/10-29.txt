@@ -1,0 +1,28 @@
+Merge Sort= dividing and conquering
+We can code this by doing a recursive solution
+
+void mergeSort(array){
+if array size <= 1
+   return;
+split array into left_array and right array
+      mergeSort(left_array)
+      mergeSort(right_array)
+      merge(left_array,right_array,sorted_array)
+
+Execution time does NOT depend on intitial arrangement of data
+Worst Case: O(n log n) comparisons and data moves
+Best Case: O(n log n) comparisons and data moves
+Stable
+Best we can do with comparison-based sorting that does not rely on a data structure in the worst case => can't beat O(n log n)
+Space overhead auxilary array at each merge step.
+
+Quick sort- uses a pivot to swap items on the left and right side of the pivot
+Divide and conquer
+n comparisons for each parition
+How many subproblems Depends on the pivot selected
+Ideally partition divides problem into two n/2 subproblems for log n recursive calls (best case)
+Eexecution does depend on initial arrangement of data
+Possible optimization (e.g. smart pivot selection, speed up base case, iterative instead of recursive implementation) can improve actual runtime -> fastest comparison-based sorting algorithm on average
+Unstable
+Worst Case: O(n^2) comparisons and data moves
+Best Case: O(n log n) comparisons and data moves

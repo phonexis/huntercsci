@@ -1,0 +1,12 @@
+Stack is an abstract data type that allows you to only look at the top of the stack.
+ADT is the logical/abstract description of the organization and operations on the data
+
+Data structure is the representtion/implmentatio of the ADT
+
+We may have multiple implementation of the ADT
+
+To complicate matters, a data structure may be implemented using other data structures
+-stack implementation using vecotr
+priority quenue implemented using heap
+
+If main() instantiates a stack, it is using a stack data structure, no matter which implementation we choose.

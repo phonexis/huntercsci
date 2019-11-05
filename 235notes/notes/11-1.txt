@@ -1,0 +1,26 @@
+Stack-a data structure representing a stack of things
+Objects can be pushed onto the stack and popped from the stack
+LIFO: Last in First out
+Only the top of the stack is accessible(top), no other objects on the stack are visible.
+
+Applications: a very simple structure
+Mnay applications: program stack, balancing parenthesis, evaluating postfix expressions, tc.
+
+Program stack: keeping track fo the process being ran currently
+
+Balancing Parentheses
+
+Postfix Expressions:operator applies to the two operands immediately preceding it
+Assumptions/simplifications
+-string is snythatically correct postfix expression
+-no unary operators
+-no exponential operators
+
+Infix VS Postflix
+1) Read characters onto corresponding stack
+2) If reading parentheses, move operators to postfix stack until a close parantheses
+
+Backtracking
+Avoid dead end by backtracking
+Avoid traveling in circles by marking visited cities
+
