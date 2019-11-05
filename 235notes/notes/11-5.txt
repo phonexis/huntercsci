@@ -1,7 +1,7 @@
 Stack is an abstract data type that allows you to only look at the top of the stack.
 ADT is the logical/abstract description of the organization and operations on the data
 
-Data structure is the representtion/implmentatio of the ADT
+Data structure is the representation/implmentation of the ADT
 
 We may have multiple implementation of the ADT
 
@@ -10,3 +10,33 @@ To complicate matters, a data structure may be implemented using other data stru
 priority quenue implemented using heap
 
 If main() instantiates a stack, it is using a stack data structure, no matter which implementation we choose.
+
+STL is the standard library of C++
+
+The problem with using arrays for stack is the amount of memory to be used
+Vectors are like dynamically allocated arrays. Everytime your vector needs to grow, it will copy, delete, and implement the changes.
+
+Vetor growth:naive approach
+If vector grows by 1 each time, every push some n "steps"
+Cost of pushes: 1+2+3+4+5+...+n=n(n-1)/2=O(n^2)
+
+Vector growth: a beter approach
+If vector grows by 2 each time,
+Let a "hard push" be where the vector needs ot be copied
+WHen vector is not copied we have an "easy push"
+Now half of the time our pushes will be easy and the other half will be hard pushes
+
+Doubling the size of the vector can be a good idea becuase we can get more easy pushes in and reduces time.
+
+Vecotr growth summarized:
+If it grows by 1, O(n^2) over time (n pushes-AMORTIZED ANALYSIS)
+If it grows by 2, push takes roughly half the "steps" but still O(n^2) over time (n pushes -AMORTIZED ANALYSIS)
+If it doubles its size, push takes O(1) over time (n pushes-AMORTIZED ANALSIS)
+It can only grow. It cannot shrink and it may allocate more than it needs.
+
+LINKED CHAIN
+An empty stack would be a nullptr
+If I wanted to push, you would instantiate a node, point its next to the first node, then point the headptr to the new node. This is O(1) because it doesn't depend on the size of the stack to add to the top of the stack.
+To pop, set a temporary pointer to the first, move the top. delete the node that was at the top and the temp pointer. This is O(1).
+
+Top function: Check that top is not a nullptr. If not null, then get the top item.
