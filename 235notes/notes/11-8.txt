@@ -1,0 +1,37 @@
+Queue: A data structure representing a waiting line
+Objects can be enqueued to the back of the line or dequeued from the front of the line
+FIFO: First in First out
+Only front of the queue is accessible (front), no other objects in the queue are visible.
+
+Queue Applications
+Generating all substrings
+Recognizing Palindromes
+
+ANy waiting queues: print jobs, OS scheduling processes with equal priority
+
+Generating all substrings
+Generate all possible strings up to some fixed length n with repetition (same character included multiple times)
+We saw how to do something similar recursively (generate permutations 
+
+Breadth-First Search
+Applications
+	find first shortest path in graph
+	GPS navigation systems
+	Crawlers in search engines
+	---
+Generally good when looking for the shortest of best way to do something => lists things in increasing oreder of "size" stopping at the "shortest" solution
+
+ANALYSIS
+Finding all substrings (with repetition) of size up to n
+Assume alphabet (A, B, ... , Z) of size 26
+The empty string = 1
+All strings of size 1 = 26
+Al string of size 2 = 26^2
+...
+All strings of size n = 26^n
+
+Take one string out and loop -> repeat till there's nothing in the queue
+The loop is looping the number of times the string is being added to the queue
+The # of string being added is above ^ 26, 26^2, ... ,26^n
+26^0 + 26^1 + 26^2 + ... + 26^n
+O(26^n)
