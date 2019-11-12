@@ -48,16 +48,38 @@ Recalling analysis for stack:
  - ...
 
 ENQUEUE
+METHOD 1
 Instantiate a new node
 Point the back pointer's next to the new node
 Point back to the new node and delete your temp ptr
+METOD2: a circular linked chain ///--------------------------FINISH THESE STEPS
+
 
 DEQUEUE
 Set a temp ptr to front
 Set front to the next node
 Delete the node through the temp ptr and temp ptr
+METhOD2: a circular linked chain
+Set temp to the first node or front
+Set the back node's next to the next of the front node
+Delete the front node and temp
+then you cut the circular chain
 
 Front?
 return front.getItem()
 
 A Queue of size 1 has a single node tht has first and last pointing to the node
+
+
+HOW WOULD YOU IMPLEMENT IT USING AN ARRAY?
+Array Considerations: STILL A FIXED SIZE
+ -front = 0
+ -back = -1
+ENQUEUE: increment back and add element to items_[back]
+DEQUEUE: increment front -> at some point, queue will be full even if it contains only a few elements [NO GOOD-RIGHWARD DRIFT]
+
+
+CIRCULAR ARRAY IMPLEMENTATION
+For enqueue, back = (back+1) % n and add element to items_[(back]
+For dequeue, front = (from+1) % n
+YOu need to keep a counter for the number of items in the array because you cannot guarantee that the array is full if front is +1 to back
