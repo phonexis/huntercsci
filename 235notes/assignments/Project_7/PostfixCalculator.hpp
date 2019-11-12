@@ -6,6 +6,7 @@
 class PostfixCalculator{
 public:
   PostfixCalculator();
+  //enum operand { +, -, /, *};
   std::string convertToPostfix(std::string infix_expression);
   double calculatorPostfix(std::string postfix_expression);
   void testCalculator(std::string input_file_name);

@@ -5,8 +5,23 @@ PostfixCalculator::PostfixCalculator(){
   //constructor here
 }
 
-std::string PostfixCalculator(std::string infix_expression){
-  
+std::string PostfixCalculator::PostfixCalculator(std::string infix_expression){
+  for(int i = 0; i < infix_expression; i++){
+    char c = infix_expression[i];
+    switch (c){
+    case operand:
+      break;
+    case '(':
+      break;
+    case operator:
+      break;
+    case ')':
+      break;
+    }
+  }
+  while(!PostfixStack.isEmpty()){
+
+  }
 }
 
 double PostfixCalculator::calculatorPostfix(std::string postfix_expression){

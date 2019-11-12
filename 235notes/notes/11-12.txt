@@ -1,0 +1,63 @@
+ANALYSIS:
+finding all substrings with repetition of size up to n
+assume alphabet of size 26
+The empty string=1=26^0
+All strings of size 1 = 26^1
+All strings of size 2 = 26^2
+....
+All strings of size n = 26^n
+
+The complexity of our algorithm is O(26^n)
+T(n) = 26^0 + 26^1 + ... + 26^n
+Memory Usage: with alphabet, at some point we end up with 26^n strings in memory
+
+size of string on my machine is 24 bytes
+
+Running this algoritm for n=7 (193 GB) is the maximum that can be handled by a standard personal computer
+For n=8 -> it is apporximately using 5TB
+THUS, THIS ALGORITHM HAS A MASSIVE SPACE REQUIREMENT!!!
+But is we use a stack...
+
+Depth-first Search: instead of searching every level, weare going down paths
+Applications
+ -dectecting cycles in graphs
+ -path finding
+ -finding strongly conencted components in graphs
+ ...
+ Time O(26^n) & Space(n)
+ Explores each option
+
+
+OTHER ADTS
+Deque- In stl
+ -does not use continguous memory
+ -more complex to implement (keep track fo memory blocks)
+ -grows more efficiently than vector
+In STL stack and queue are adapters of deque.
+STL standardized the use of "push" and "pop", adapting with "push_back" , "push_front" etc. for all containers
+
+Priority Queue
+ -A queue of items "sorted" by priority
+ -orders elements by priority => removing an element will return the element with highest priority value
+ -Elements with same priority kpet in queue order (in some implementations)
+ -Often implemented with a heap, which is a binary tree (an example of ADT vs. data structure)
+
+Recalling analysis for stack:
+ -Linked chains do not have growth overheads
+ -Array does not have unbounded size
+ - ...
+
+ENQUEUE
+Instantiate a new node
+Point the back pointer's next to the new node
+Point back to the new node and delete your temp ptr
+
+DEQUEUE
+Set a temp ptr to front
+Set front to the next node
+Delete the node through the temp ptr and temp ptr
+
+Front?
+return front.getItem()
+
+A Queue of size 1 has a single node tht has first and last pointing to the node
