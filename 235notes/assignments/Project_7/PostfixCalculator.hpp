@@ -5,13 +5,20 @@
 
 class PostfixCalculator{
 public:
+  //CONSTRUCTOR
   PostfixCalculator();
-  //enum operand { +, -, /, *};
+
+  //HELPER FUNCTIONS
+  int precedence(char c);
+  bool isOperator(char c);
+  bool balanced(std::string s);
+
+  //MEMBER FUNCTIONS
   std::string convertToPostfix(std::string infix_expression);
-  double calculatorPostfix(std::string postfix_expression);
+  double calculatePostfix(std::string postfix_expression);
   void testCalculator(std::string input_file_name);
 private:
-  std::stack<std::string> PostfixStack;
-  std::tack<std::string> OperatorStack;
+  std::stack<char> OperatorStack;
+  
 };
 
