@@ -17,8 +17,9 @@ public:
   std::string convertToPostfix(std::string infix_expression);
   double calculatePostfix(std::string postfix_expression);
   void testCalculator(std::string input_file_name);
+  
 private:
   std::stack<char> OperatorStack;
-  
+  std::stack<std::string> OperandStack;  
 };
 

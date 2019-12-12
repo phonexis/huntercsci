@@ -1,0 +1,19 @@
+Workshop: github for web prescence
+
+Digital ocean provides developers cloud services that help to deploy and scale applications that run simultaneously on multiple computers
+
+Normally for we development, you have backend and frontend.
+
+1) Make an organization.
+2) Create a repository. Turn on github pages (Pick a branch (usually master branch)
+  - Github renders markdown files. "Markdown is a lightweight and easy-to-use syntax for styling all forms of writing on the github platform"
+  - By default, github will use youre README.md file
+  - If you create an index.html file,
+3) Go to settings. Rename the repository to full_organization_name.github.io.
+  - This will allow for the url to change from needing the full repository location to just full_organization_name.github.io
+
+ Ctrl + U for HTML source / Ctrl + SHift + I
+ .gitignore : If you create a file in your repository named .gitignore, Git uses it to determine which files and directories to ignore, before you make a commit.
+
+STATIC WEBSITE BLOG THEMES: JEKYLL [Website themes that can be copied into the repo]
+
