@@ -1,0 +1,12 @@
+HEAPS - a complete binary tree that is either empty or its root contains a value >= (or <=) both of its children and has heaps as subtrees
+
+BST: each tree has 0, 1(left child), 2 leaves. The path from the root is either h or h-1.  (left then right)
+
+The root of a heap is greater or less than eiher of the children and those respectice children are heaps themselves.
+
+Heap is a special bianry tree that is ordered in a weak sense and always a complete binary tree
+
+Maxheap: root is greater than all of its children (greatest value)
+Minheap: roo is less that all of its children (smallest value)
+
+We will be making a tree that does not use linked chains. They are often implemented in an array/continuous memory structure.

@@ -1,0 +1,70 @@
+Binary Tree Traversals
+
+STANDARD TRAVERSAL OPERATIONS:
+
+Vist(retrieve, print, modify ...) every node in the tree
+Preorder Traversal:
+
+if(T is not empty){
+ visit the root r
+ Traverse T_L
+ traverse T_r
+}
+
+Vist(retrieve, print, modify ...) every node in the tree
+Inorder Traversal:
+
+if(T is not empty){
+ Traverse T_
+ visit the root r
+ traverse T_r
+}
+
+Vist(retrieve, print, modify ...) every node in the tree
+Postorder Traversal:
+
+if(T is not empty){
+ Traverse T_
+ Traverse T_r
+ Visit the root r
+}
+
+BINARYTREE ADT OPERATIONS: -----------------------------------------------------
+Recall our BAG ADT
+
+BST Formally:
+Let S be a set of values upon which a total ordering relation <, is defined. For example, S can be the set of integers
+Abinary search tree (BST) for the ordered set (S,<) is a binary tree with teh following properties:
+//FINISH THIS AFTER CLASS
+
+
+
+Binary search tree
+search(bs_tree, item)
+{
+ if(bs_tree is empty){
+ 	    item not found
+ }
+ else if(item == root){
+      	      return root
+ }
+ else if (item < root)
+      	       search(T_L,item)
+ else{
+		search(T_R,item)
+ }
+
+Inserting into a BST does not change the structure of the tree.
+You GROW a tree with BST property, you don't get to restructure it
+(Self-balancing trees)
+add(bs_tree,item){
+ if(bs_tree is empty){
+ make item teh root
+ }
+ else if (item < root){
+ add(T_L, item)
+ }
+ else{
+ add(T_R,item)
+ }
+}

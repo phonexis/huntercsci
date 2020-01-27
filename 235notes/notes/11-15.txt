@@ -1,0 +1,52 @@
+TREES
+ADT Operations we have seen so far:
+Bag, List, Stack, Queue
+
+Add data to collection
+Remove and retrieve data from collection
+
+Stack and queue are postion based
+
+Bag, retrieval is always value based
+
+Trees are nonlinear structures (a special kind of graph) that can represent relationships in a hierarchical (direcitonal) organization. (like a family tree)
+
+Branches are edges and nodes
+
+The height of a tree is the longest path from the roots to top or the number of levels to a tree (which is a view that the computer cannot see. The computer cna only see the paths that it goes down (not the bigger picture)
+
+Path: a sequence of nodes
+Height: the number of nodes in the longest path from the root to a leaf
+Subtree: the subtree rooted at node n is the tree formed by taking n as the root node and including all its descendants.
+
+We've used trees for decisions trees, divide and conquer, etc. (merge ort and finding permutations)
+
+Binary Tree ADT -----------------------------------------------------------
+A binary tree is a tree in which each node has at most 2 children
+
+APPLICATIONS: Algebraic expressions
+
+Huffman Tree: a compression algoritm. the idea fo using a frequency-sorted binary tree and quickly proved this mthod the most efficient.
+ Idea: encode symbols into a sequence of bits s.t. most frequent symbols have shortest encoding
+ Not encryption but compression => use shorest code for most frequent symbols
+
+Full binary trees: every node that is not a leaf had eactly 2 children. everynode has left and right subtrees of same height. all leaves are at the smae level n
+
+Complete binary tree: a tree that is full up ot level n-1, with level h filled in from left to right. all nodes at levels h-2 and above has exactly 2 children. When a node at h-1 has children, all nodes to its left have exactly 2 children. when a node at lvel h-1 has one child, it has a left child.
+
+(height) balanced tree: for any node, the left and right subtrees differ in height by no more than 1. all paths from root to leaf differ in length by at most 1.
+
+MAXIMUM HEIGHT:
+binary tree of height h can have up to n = 2^h -1.
+ h=log_2 (n+1) for a FULL BINARY TREE
+
+Binary tree traversals-------------------------------------------------------
+visit every node in the tree => visit(retrieve, print, modify, ...) every node in the tree
+PREORDER TRAVERSAL
+
+if(T is not empty) //implicit base case
+{
+ visit the root r
+ traverse T_l (left subtree)
+ traverse T_r (right subtree)
+}

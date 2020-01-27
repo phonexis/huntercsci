@@ -1,0 +1,18 @@
+#pragma once
+
+#include <iostream>
+#include <string>
+class CodewordGenerator{
+public:
+  /* 
+     takes a string pattern and returns the shortest string that matched the pattern exploring the space of possible alphabet permutations in Breadth First Search order. The input string is guaranteed to represent a valid regular expression patter */
+  std::string generateShortestWord(std::string pattern);
+  
+  /*
+    takes the string patterna nd integer n and returns a string of length n that matches the pattern exploring the space of possible alphabet permutations in Depth First Search order.
+    Here too, the input string is guaranteed to represent a valid regular expression pattern */
+  std::string generateLengthWord(std::string pattern, int length);
+  
+private:
+
+};
