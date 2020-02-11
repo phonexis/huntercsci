@@ -18,7 +18,7 @@ void TestPart1() {
     const array<int, 2> a_point2{{7, 10}};
     Points2<int> d{a_point2};  // A Points2 containing (7, 10) should be created.
     cout << d;  // Should just print (7, 10).
-    /*cout << "Enter a sequence of points (integer)" << endl;
+    cout << "Enter a sequence of points (integer)" << endl;
     a.ReadPoints2(); // User enters a set of points in the form:
                      // 3 7 4 3 2 1 10
                      // 3 specifies number of points. Points are the pairs
@@ -43,7 +43,7 @@ void TestPart1() {
     cout << "After a = move(e) " << endl;
     a = move(e);  // Move assignment operator for a.
     cout << a;
-    cout << e;*/
+    cout << e;
 }  
 
 void TestPart2() {
@@ -68,6 +68,6 @@ void TestPart2() {
 int
 main(int argc, char **argv) {
   TestPart1();
-  //TestPart2();
+  TestPart2();
   return 0;
 }
