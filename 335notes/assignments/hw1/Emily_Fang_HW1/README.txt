@@ -33,17 +33,6 @@ To run:
 
 ./test_points2
 
-In my case, using test_input_file.txt resulted in a an Aborted (core dumped).
-I ran ./test_points2 < input.txt
-
-input.txt looks like this:
-3 7 4 3 2 19 71
-4 100 101 2 3 40 50 11 33
-3 2.1 20.3 11.11 12.45 13.1 14.2
-2 1.1 100 20.1 30.2
-
--------------------------------------------------------------------
-
 ^^In that case you will provide input from standard input.
 
 To run with a given file that is redirected to standard input:

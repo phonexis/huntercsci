@@ -106,7 +106,7 @@ class Points2 {
   // const version.
   // abort() if out-of-range.
   const std::array<Object, 2>& operator[](size_t location) const {
-    if(location < size_) { //if not out of scope
+    if(location < size_ && location >= 0) { //if not out of scope
       return sequence_[location]; //return point at index location 
     }
     abort();
