@@ -1,8 +1,8 @@
-// Emily Fang
+// <Your name>
 // Main file for Part2(a) of Homework 2.
 
 #include "avl_tree.h"
-#include "sequence_map.h"
+// You will have to add #include "sequence_map.h"
 
 #include <iostream>
 #include <string>
