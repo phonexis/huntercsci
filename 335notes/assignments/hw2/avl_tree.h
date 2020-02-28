@@ -89,11 +89,28 @@ class AvlTree
     /**
      * Returns true if x is found in the tree.
      */
-    bool contains( const Comparable & x ) const
-    {
-        return contains( x, root );
-    }
+  bool contains( const Comparable & x ) const
+  {
+    return contains( x, root );
+  }
+  //-------------------------------------------------------------------------------------
+  /* Returns the node that matches the recognition sequence */
+  Comparable find( const Comparable & x ) const {
+    Comparable match = find( x, root )->element; //private member function
+    return match;
+  }
 
+  void printReco ( const string & reco_seq ) {
+    Comparable temp(reco_seq, "");
+    AvlNode * t = find(temp);
+    if(t != nullptr) {
+      for(auto x: temp->enzyme_acronyms) {
+	std::cout << x << " ";
+      }
+    }
+    else std::cout << "Not Found" << std::endl;
+  }
+  
     /**
      * Test if the tree is logically empty.
      * Return true if empty, false otherwise.
@@ -294,6 +311,28 @@ class AvlTree
         else
             return true;    // Match
     }
+
+  AvlNode* find( const Comparable & x, AvlNode *t ) const {
+    if( t == nullptr )
+      return nullptr;
+    else if( x < t->element )
+      return find( x, t->left );
+    else if( t->element < x )
+      return find( x, t->right );
+    else 
+      return t;    // Match
+  }
+
+  /*void printReco ( const string & reco_seq ) {
+    Comparable temp(reco_seq, "");
+    Comparable * t = find(temp, root);
+    if(t != nullptr) {
+      for(auto x: temp->enzyme_acronyms) {
+	std::cout << x << " ";
+      }
+    }
+    else std::cout << "Not Found" << std::endl;
+    }*/
 /****** NONRECURSIVE VERSION*************************
     bool contains( const Comparable & x, AvlNode *t ) const
     {

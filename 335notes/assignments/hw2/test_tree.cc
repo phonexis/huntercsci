@@ -10,14 +10,33 @@ using namespace std;
 
 namespace {
 
-// @db_filename: an input database filename.
-// @seq_filename: an input sequences filename.
-// @a_tree: an input tree of the type TreeType. It is assumed to be
-//  empty.
-template <typename TreeType>
-void TestTree(const string &db_filename, const string &seq_filename, TreeType &a_tree) {
-  // Code for running Part2(b)  
-}
+  // @db_filename: an input database filename.
+  // @seq_filename: an input sequences filename.
+  // @a_tree: an input tree of the type TreeType. It is assumed to be
+  //  empty.
+  template <typename TreeType>
+  void TestTree(const string &db_filename, const string &seq_filename, TreeType &a_tree) {
+    // Code for running Part2(b)
+    //does not implement merge yet
+    ifstream myfile(db_filename).open();
+    stringstream input;
+    string token = "";
+    int i = 0;
+    while(i < 9) {
+      getline(myfile,input);
+    }
+
+    while(getline(myfile, input)) {
+      string acronym = getline(input,token,'/');
+      string reco_seq = getline(input,token,'/');
+      SequenceMap new_sequence_map(reco_seq, acronym);
+      a_tree.insert(new_sequence_map);
+      while (getline(input,token,'/')) {
+	SequenceMap new_sequence_map(token.substr(1,token.length()-1), acronym);
+	a_tree.insert(new_sequence_map);
+      }
+    }
+  }
 
 }  // namespace
 
