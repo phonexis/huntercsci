@@ -7,15 +7,6 @@
 
 class SequenceMap {
  public:
-  //BIG FIVE
-  /*SequenceMap() : recognition_sequence{""} {};
-
-  SequenceMap(const SequenceMap &rhs) {
-    recognition_sequence_ = rhs.recognition_sequence_;
-  }
-  
-  ~SequenceMap() = default;
-  */
   //constructs a SequenceMap from two strings
   SequenceMap(const std::string &a_rec_seq, const std::string &an_enz_acro) {
     recognition_sequence_ = a_rec_seq;
@@ -27,16 +18,21 @@ class SequenceMap {
   }
 
   friend std::ostream &operator<<(std::ostream &out, const SequenceMap & some_sequence) {
-    for(auto x: some_sequence.enzyme_acronyms) {
-      out << x << " ";
+    if(some_sequence.enzyme_acronyms.size() == 0) {
+      out << "Not Found\n";
     }
-    out << std::endl;
+    else {
+      for(auto x: some_sequence.enzyme_acronyms) {
+	out << x << " ";
+      }
+    }
+    return out;
   }
 
   void Merge(const SequenceMap &other_sequence) {
     for(auto x: other_sequence.enzyme_acronyms) {
       auto iterator = std::find(enzyme_acronyms.begin(), enzyme_acronyms.end(), x);
-      if(iterator != enzyme_acronyms.end()) {
+      if(iterator == enzyme_acronyms.end()) {
 	enzyme_acronyms.push_back(x);
       }
     }

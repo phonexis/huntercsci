@@ -95,20 +95,9 @@ class AvlTree
   }
   //-------------------------------------------------------------------------------------
   /* Returns the node that matches the recognition sequence */
-  Comparable find( const Comparable & x ) const {
-    Comparable match = find( x, root )->element; //private member function
-    return match;
-  }
-
-  void printReco ( const string & reco_seq ) {
-    Comparable temp(reco_seq, "");
-    AvlNode * t = find(temp);
-    if(t != nullptr) {
-      for(auto x: temp->enzyme_acronyms) {
-	std::cout << x << " ";
-      }
-    }
-    else std::cout << "Not Found" << std::endl;
+  Comparable* find( const Comparable & x ) const {
+    Comparable * c = & find( x, root )->element;
+    return c;
   }
   
     /**
