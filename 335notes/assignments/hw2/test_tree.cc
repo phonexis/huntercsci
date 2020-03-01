@@ -101,7 +101,7 @@ namespace {
     int nodes = a_tree.inPathLength();
     int path = a_tree.totalNodes();
     double average = (double)nodes/(double)path;
-    cout << "2: " << nodes << endl;
+    cout << "2: " << a_tree.inPathLength() << endl;
     cout << "3a: " << average << endl;
     cout << "3b: " << average/ log2(path) << endl;
 
