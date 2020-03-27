@@ -15,9 +15,30 @@ void TestFunctionForHashTable(HashTableType &hash_table, const string &words_fil
   hash_table.MakeEmpty();  
   //..Insert your own code
 
+  int collisions, items = 0;
+  ifstream build;
+  build.open(words_filename);
+  string input;
+
+  while(getline(build, input)) {
+    std::cout << input << std::endl;
+  }
+  items = hash_table.current_size_;
+  myfile.close();
+
+  //Queries
+  /*
+  ifstream query;
+  query.open(query_filename);
+  while(getline(query, input)) {
+
+  }
+
+  query.close();
+*/
   cout << "Collisions: " << endl;
-  cout << "Number of items: " << endl;
-  cout << "Size of hash table: " << endl;
+  cout << "Number of items: " << items << endl;
+  cout << "Size of hash table: " << hash_table.array_.size() << endl;
   cout << "Load factor: " << endl;
   cout << "Avg. number of collisions: " << endl;
 }
