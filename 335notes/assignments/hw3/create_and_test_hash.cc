@@ -1,7 +1,8 @@
-// YOUR NAME.
+// Emily Fang
 
 #include "quadratic_probing.h"
 #include "linear_probing.h"
+#include "double_hashing.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -11,19 +12,19 @@ using namespace std;
 
 template <typename HashTableType>
 void TestFunctionForHashTable(HashTableType &hash_table, const string &words_filename, const string &query_filename) {
-  cout << "TestFunctionForHashTables..." << endl;
+  /*cout << "TestFunctionForHashTables..." << endl;
   cout << "Words filename: " << words_filename << endl;
-  cout << "Query filename: " << query_filename << endl;
+  cout << "Query filename: " << query_filename << endl;*/
   hash_table.MakeEmpty();
   //..Insert your own code
   
-  int collisions, items, size = 0;
+  int collisions, items, size, probes = 0;
   ifstream build;
   build.open(words_filename);
   string input;
 
   while(getline(build, input)) {
-    hash_table.Insert(input, collisions);
+    hash_table.Insert(input, collisions, probes);
     //std::cout << input << std::endl;
   }
   
@@ -31,24 +32,28 @@ void TestFunctionForHashTable(HashTableType &hash_table, const string &words_fil
   size = hash_table.Size();
   build.close();
 
+  //Print statements
+  cout << "number_of_elements: " << items << endl;
+  cout << "size_of_table: " << size << endl;
+  cout << "load_factor: " << (double)items/size << endl;
+  cout << "collisions: " << collisions << endl;
+  cout << "avg_collisions: "<< (double)collisions/items << endl;
+
+  cout << endl;
+
   //Queries
   ifstream query;
   query.open(query_filename);
-  int x = 0;
   while(getline(query, input)) {
-    if (hash_table.Find(input, x)) {
-      std::cout << "found " << input << std::endl;
+    if (hash_table.Find(input, collisions, probes)) {
+      std::cout << input << " Found " << probes  << std::endl;
     }
-    std::cout << "not found" << std::endl;
+    else {
+      std::cout << input << " Not_Found " << probes << std::endl;
+    }
   }
 
   query.close();
-  
-  cout << "Collisions: " << collisions << endl;
-  cout << "Number of items: " << items << endl;
-  cout << "Size of hash table: " << size << endl;
-  cout << "Load factor: " << (double)items/size << endl;
-  cout << "Avg. number of collisions: "<< (double)collisions/items << endl;
 }
 
 int testFunctionWrapper(int argument_count, char **argument_list) {
