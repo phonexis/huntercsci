@@ -54,6 +54,7 @@ namespace {
       index++;
     }
     cout << "5a: " << successes << endl;
+    cout << recursion_calls << endl;
     cout << "5b: " << (double)recursion_calls/(double)(index/2) << endl; //average recursive calls
   }
 

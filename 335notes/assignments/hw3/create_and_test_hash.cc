@@ -1,9 +1,11 @@
 // YOUR NAME.
 
 #include "quadratic_probing.h"
+#include "linear_probing.h"
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cmath>
 using namespace std;
 
 
@@ -12,35 +14,41 @@ void TestFunctionForHashTable(HashTableType &hash_table, const string &words_fil
   cout << "TestFunctionForHashTables..." << endl;
   cout << "Words filename: " << words_filename << endl;
   cout << "Query filename: " << query_filename << endl;
-  hash_table.MakeEmpty();  
+  hash_table.MakeEmpty();
   //..Insert your own code
-
-  int collisions, items = 0;
+  
+  int collisions, items, size = 0;
   ifstream build;
   build.open(words_filename);
   string input;
 
   while(getline(build, input)) {
-    std::cout << input << std::endl;
+    hash_table.Insert(input, collisions);
+    //std::cout << input << std::endl;
   }
-  items = hash_table.current_size_;
-  myfile.close();
+  
+  items = hash_table.Items();
+  size = hash_table.Size();
+  build.close();
 
   //Queries
-  /*
   ifstream query;
   query.open(query_filename);
+  int x = 0;
   while(getline(query, input)) {
-
+    if (hash_table.Find(input, x)) {
+      std::cout << "found " << input << std::endl;
+    }
+    std::cout << "not found" << std::endl;
   }
 
   query.close();
-*/
-  cout << "Collisions: " << endl;
+  
+  cout << "Collisions: " << collisions << endl;
   cout << "Number of items: " << items << endl;
-  cout << "Size of hash table: " << hash_table.array_.size() << endl;
-  cout << "Load factor: " << endl;
-  cout << "Avg. number of collisions: " << endl;
+  cout << "Size of hash table: " << size << endl;
+  cout << "Load factor: " << (double)items/size << endl;
+  cout << "Avg. number of collisions: "<< (double)collisions/items << endl;
 }
 
 int testFunctionWrapper(int argument_count, char **argument_list) {
@@ -49,8 +57,8 @@ int testFunctionWrapper(int argument_count, char **argument_list) {
   const string param_flag(argument_list[3]);
 
   if (param_flag == "linear") {
-    // HashTableLinear<string> linear_probing_table;
-    // TestFunctionForHashTable(linear_probing_table, words_filename, query_filename);    
+    HashTableLinear<string> linear_probing_table;
+    TestFunctionForHashTable(linear_probing_table, words_filename, query_filename);    
   } else if (param_flag == "quadratic") {
     HashTable<string> quadratic_probing_table;
     TestFunctionForHashTable(quadratic_probing_table, words_filename, query_filename);    
