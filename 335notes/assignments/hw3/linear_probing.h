@@ -8,8 +8,8 @@ class HashTableLinear {
   explicit HashTableLinear(size_t size = 101) : array_(NextPrime(size))
     { MakeEmpty(); }
   
-  bool Contains(const HashedObj & x) const {
-    return IsActive(FindPos(x));
+  bool Contains(const HashedObj & x, int & collisions) const {
+    return IsActive(FindPos(x, collisions));
   }
   
   void MakeEmpty() {
@@ -18,11 +18,10 @@ class HashTableLinear {
       entry.info_ = EMPTY;
   }
 
-  bool Insert(const HashedObj & x, int & collisions, int & probes) {
+  bool Insert(const HashedObj & x, int & collisions) {
     // Insert x as active
-    size_t current_pos = FindPos(x, collisions, probes);
+    size_t current_pos = FindPos(x, collisions);
     if (IsActive(current_pos)) {
-      collisions += 1;
       return false;
     }
     
@@ -31,15 +30,14 @@ class HashTableLinear {
     
     // Rehash; see Section 5.5
     if (++current_size_ > array_.size() / 2)
-      Rehash(collisions, probes);    
+      Rehash(collisions);    
     return true;
   }
     
-  bool Insert(HashedObj && x, int & collisions, int & probes) {
+  bool Insert(HashedObj && x, int & collisions) {
     // Insert x as active
-    size_t current_pos = FindPos(x, collisions, probes);
+    size_t current_pos = FindPos(x, collisions);
     if (IsActive(current_pos)) {
-      collisions += 1;
       return false;
     }
     
@@ -48,7 +46,7 @@ class HashTableLinear {
 
     // Rehash; see Section 5.5
     if (++current_size_ > array_.size() / 2)
-      Rehash(collisions, probes);
+      Rehash(collisions);
 
     return true;
   }
@@ -61,14 +59,6 @@ class HashTableLinear {
     array_[current_pos].info_ = DELETED;
     return true;
   }
-
-  bool Find(const HashedObj & x, int & collisions, int & probes) {
-    size_t current_pos = FindPos(x, collisions, probes);
-    if (!IsActive(current_pos))
-      return false;
-    return true;
-  }
-
 
   int Items() {
     return current_size_;
@@ -97,26 +87,22 @@ class HashTableLinear {
   bool IsActive(size_t current_pos) const
   { return array_[current_pos].info_ == ACTIVE; }
 
-  size_t FindPos(const HashedObj & x, int & collisions, int & probes) const {
+  size_t FindPos(const HashedObj & x, int & collisions) const {
     size_t offset = 1;
-    size_t current_pos = InternalHash(x, offset);
+    size_t current_pos = InternalHash(x);
       
     while (array_[current_pos].info_ != EMPTY &&
 	   array_[current_pos].element_ != x) {
       collisions += 1;
-      offset += 1;
-      current_pos = InternalHash(x, offset);
-      //current_pos += offset;  // Compute ith probe.
-      
+      current_pos += offset;
       if (current_pos >= array_.size())
 	current_pos -= array_.size();
     }
-    probes = offset;
     
     return current_pos;
   }
 
-  void Rehash(int & collisions, int & probes) {
+  void Rehash(int & collisions) {
     std::vector<HashEntry> old_array = array_;
     // Create new double-sized, empty table.
     array_.resize(NextPrime(2 * old_array.size()));
@@ -127,11 +113,11 @@ class HashTableLinear {
     current_size_ = 0;
     for (auto & entry :old_array)
       if (entry.info_ == ACTIVE)
-	Insert(std::move(entry.element_), collisions, probes);
+	Insert(std::move(entry.element_), collisions);
   }
   
-  size_t InternalHash(const HashedObj & x, size_t offset) const {
+  size_t InternalHash(const HashedObj & x) const {
     static std::hash<HashedObj> hf;
-    return (hf(x) + offset) % array_.size( );
+    return hf(x) % array_.size( );
   }
 };

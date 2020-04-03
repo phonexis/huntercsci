@@ -11,6 +11,13 @@ int testSpellingWrapper(int argument_count, char** argument_list) {
   const string document_filename(argument_list[1]);
   const string dictionary_filename(argument_list[2]);
   
+  ifstream document;
+  document.open(document_filename);
+  string input;
+
+  ifstream dictionary;
+  dictionary.open(dictionary_filename);
+
   cout << "Input document filename is " << document_filename << endl;
   cout << "Input dictionary filename is " << dictionary_filename << endl;
 
