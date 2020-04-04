@@ -1,28 +1,64 @@
 // YOUR NAME.
 
 #include "quadratic_probing.h"
+#include "double_hashing.h"
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <string>
 using namespace std;
 
-int testSpellingWrapper(int argument_count, char** argument_list) {
+/*string taskA(string s) {
 
+}
+
+string taskB(string s) {
+
+}
+
+string taskC(string s) {
+
+}*/
+
+int testSpellingWrapper(int argument_count, char** argument_list) {
   const string document_filename(argument_list[1]);
   const string dictionary_filename(argument_list[2]);
+
+  HashTableDouble<string> dictionary;
+  dictionary.RVal(13);
+  int collisions = 0;
+  ifstream dictionary_file;
+  string input, word;
+  dictionary_file.open(dictionary_filename);
+  while(getline(dictionary_file, input)) {
+    dictionary.Insert(input, collisions);
+    // std::cout << input << std::endl;
+  }
+  dictionary_file.close();
+
+
+  ifstream document_file;
+  document_file.open(document_filename);
   
-  ifstream document;
-  document.open(document_filename);
-  string input;
-
-  ifstream dictionary;
-  dictionary.open(dictionary_filename);
-
-  cout << "Input document filename is " << document_filename << endl;
-  cout << "Input dictionary filename is " << dictionary_filename << endl;
+  while(getline(document_file, input)) {
+    std::stringstream ss(input);
+    while(ss >> word) {
+      if(dictionary.Contains(word, collisions)) {
+	std::cout << word << " is CORRECT" << std::endl;
+      }
+      else {
+	//std::cout << input << " is INCORRECT" << std::endl;
+	//std::cout << "** " << input << " -> " << " ** case A" << std::endl;
+	//std::cout << "** " << input << " -> " << " ** case B" << std::endl;
+	//std::cout << "** " << input << " -> " << " ** case C" << std::endl;
+      }
+    }
+  }
+  
+  document_file.close();
 
   // Call functions implementing the assignment requirements.
-
+  return 0;
 }
 
 // Sample main for program spell_check.
