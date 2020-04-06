@@ -1,5 +1,7 @@
 // Emily Fang
+// CSCI 335
 
+//importing quadratic, linear, and double hashing 
 #include "quadratic_probing.h"
 #include "linear_probing.h"
 #include "double_hashing.h"
@@ -13,18 +15,22 @@ using namespace std;
 template <typename HashTableType>
 void TestFunctionForHashTable(HashTableType &hash_table, const string &words_filename, const string &query_filename) {
   hash_table.MakeEmpty();
-  
+
+  //Collision count through parameter dereference
   int collisions = 0;
+
+  //Build: Words.txt file stream
   ifstream build;
   build.open(words_filename);
   string input;
 
   while(getline(build, input)) {
+    //Insets words/input
     hash_table.Insert(input, collisions);
   }
-  
-  int items = hash_table.Items();
-  int size = hash_table.Size();
+
+  int items = hash_table.Items(); //number of elements
+  int size = hash_table.Size(); //hashtable size
   build.close();
 
   //Print statements
@@ -36,19 +42,21 @@ void TestFunctionForHashTable(HashTableType &hash_table, const string &words_fil
 
   cout << endl;
 
-  //Queries
+  //Queries: query_words.txt file stream
   ifstream query;
   query.open(query_filename);
+  
   while(getline(query, input)) {
-    int probes = 1;
+    int probes = 1; //probes or collisions from each query
+    //Probes start at 1 to include the first probe for the word
     if (hash_table.Contains(input, probes)) {
       std::cout << input << " Found " << probes << std::endl;
     }
-    else {
+    else { //does not contain
       std::cout << input << " Not_Found " << probes << std::endl;
     }
   }
-  collisions = 0;
+  
   query.close();
 }
 
