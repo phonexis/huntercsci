@@ -29,29 +29,62 @@ void TestTiming() {
 
 // Generates and returns random vector of size @size_of_vector.
 vector<int> GenerateRandomVector(size_t size_of_vector) {
-  // Use rand() to generate random integer
-  // Add code
-
+  vector<int> v{size_of_vector};
+  srand(time(NULL));
+  for (int i = 0; i < size_of_vector; i++) {
+    int randnum = rand() % 100 + 1;
+    v[i] = randnum;
+  }
+  return v;
 }
 
 // Generate and returns sorted vecotr of size @size_of_vector
 // If smaller_to_larger is true, returns vector sorted from small to large
 // Otherwise returns vector sorted from large to small
 vector<int> GenerateSortedVector(size_t size_of_vector, bool smaller_to_larger) {
-  // Add code
+  vector<int> v{size_of_vector};
+  if (smaller_to_larger) {
+    for (int i = 0; i < size_of_vector; i++) {
+      v[i] = i;
+    }
+    return v;
+  }
+  else {
+    int diff = size_of_vector;
+    for (int i = size_of_vector; i > 0; i--) {
+      v[i - diff] = i;
+      diff --;
+    }
+    return v;
+  }
 }
 
 // Verifies that a vector is sorted given a comparator
 template <typename Comparable, typename Comparator>
 bool VerifyOrder(const vector<Comparable> &input, Comparator less_than) {
   // Add code
-
+  /* if (typeid(Comparator) == typeid(greater)) {
+    for(int i = 0; i < input.size(); i++) {
+      if(input[i] < input[i+1]) {
+	return false;
+      }
+    }
+    return true;
+  }
+  else {
+    for(int i = 0; i < input.size(); i++) {
+      if(input[i] > input[i+1]) {
+	return false;
+      }
+    }
+    return true;
+    }*/
 }
 
 // Computes duration given a start time and a stop time in nano seconds
-long long ComputeDuration(chrono::high_resolution_clock::time_point start_time, chrono::high_resolution_clock::time_point end_time) {
+auto ComputeDuration(chrono::high_resolution_clock::time_point start_time, chrono::high_resolution_clock::time_point end_time) {
   // Add code
-  
+  return end_time - start_time;
 }
 
 // Wrapper function to test different sorting algorithms
@@ -61,15 +94,15 @@ void sortTestingWrapper(int argc, char **argv) {
   const string comparison_type = string(argv[3]);
   if (input_type != "random" && input_type != "sorted_small_to_large" && input_type != "sorted_large_to_small") {
     cout << "Invalid input type" << endl;
-    return 0;
+    return;
   }
   if (input_size <= 0) {
     cout << "Invalid size" << endl;
-    return 0;
+    return;
   }
   if (comparison_type != "less" && comparison_type != "greater") {
     cout << "Invalid comparison type" << endl;
-    return 0;
+    return;
   }
   
   // This block of code to be removed for your final submission.
@@ -79,10 +112,24 @@ void sortTestingWrapper(int argc, char **argv) {
   vector<int> input_vector;
   if (input_type == "random") {
     // Generate random vector
-    
+    input_vector = GenerateRandomVector(input_size);
+    for(int x: input_vector) {
+      cout << x << ", ";
+    }
   } else {
     // Generate sorted vector.
-
+    if (input_type == "sorted_small_to_large") {
+      input_vector = GenerateSortedVector(input_size, true);
+      for(int x: input_vector) {
+	cout << x << ", ";
+      }
+    }
+    else {
+      input_vector = GenerateSortedVector(input_size, false);
+      for(int x: input_vector) {
+	cout << x << ", ";
+      }
+    }
   }
 
   // Call quicksort / heapsort / mergesort using appropriate input.
