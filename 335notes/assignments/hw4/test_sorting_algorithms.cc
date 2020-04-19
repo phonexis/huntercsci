@@ -29,7 +29,7 @@ void TestTiming() {
 
 // Generates and returns random vector of size @size_of_vector.
 vector<int> GenerateRandomVector(size_t size_of_vector) {
-  vector<int> v{size_of_vector};
+  vector<int> v(size_of_vector);
   srand(time(NULL));
   for (int i = 0; i < size_of_vector; i++) {
     int randnum = rand() % 100 + 1;
@@ -42,7 +42,7 @@ vector<int> GenerateRandomVector(size_t size_of_vector) {
 // If smaller_to_larger is true, returns vector sorted from small to large
 // Otherwise returns vector sorted from large to small
 vector<int> GenerateSortedVector(size_t size_of_vector, bool smaller_to_larger) {
-  vector<int> v{size_of_vector};
+  vector<int> v(size_of_vector);
   if (smaller_to_larger) {
     for (int i = 0; i < size_of_vector; i++) {
       v[i] = i;
@@ -51,8 +51,8 @@ vector<int> GenerateSortedVector(size_t size_of_vector, bool smaller_to_larger) 
   }
   else {
     int diff = size_of_vector;
-    for (int i = size_of_vector; i > 0; i--) {
-      v[i - diff] = i;
+    for (int i = 0; i < size_of_vector; i++) {
+      v[i] = diff;
       diff --;
     }
     return v;
@@ -63,7 +63,7 @@ vector<int> GenerateSortedVector(size_t size_of_vector, bool smaller_to_larger) 
 template <typename Comparable, typename Comparator>
 bool VerifyOrder(const vector<Comparable> &input, Comparator less_than) {
   // Add code
-  /* if (typeid(Comparator) == typeid(greater)) {
+  if (typeid(Comparator) == less_than) {
     for(int i = 0; i < input.size(); i++) {
       if(input[i] < input[i+1]) {
 	return false;
@@ -78,7 +78,7 @@ bool VerifyOrder(const vector<Comparable> &input, Comparator less_than) {
       }
     }
     return true;
-    }*/
+  }
 }
 
 // Computes duration given a start time and a stop time in nano seconds
@@ -113,22 +113,14 @@ void sortTestingWrapper(int argc, char **argv) {
   if (input_type == "random") {
     // Generate random vector
     input_vector = GenerateRandomVector(input_size);
-    for(int x: input_vector) {
-      cout << x << ", ";
-    }
+
   } else {
     // Generate sorted vector.
     if (input_type == "sorted_small_to_large") {
       input_vector = GenerateSortedVector(input_size, true);
-      for(int x: input_vector) {
-	cout << x << ", ";
-      }
     }
     else {
       input_vector = GenerateSortedVector(input_size, false);
-      for(int x: input_vector) {
-	cout << x << ", ";
-      }
     }
   }
 

@@ -76,7 +76,7 @@ void shellsort( vector<Comparable> & a )
  * Standard heapsort.
  */
 template <typename Comparable>
-void heapsort( vector<Comparable> & a )
+void heapsort( vector<Comparable> & a, Comparator less_than )
 {
     for( int i = a.size( ) / 2 - 1; i >= 0; --i )  /* buildHeap */
         percDown( a, i, a.size( ) );
@@ -146,7 +146,7 @@ void mergeSort( vector<Comparable> & a,
  * Mergesort algorithm (driver).
  */
 template <typename Comparable>
-void mergeSort( vector<Comparable> & a )
+void mergeSort( vector<Comparable> & a, Comparator less_than )
 {
     vector<Comparable> tmpArray( a.size( ) );
 
@@ -249,7 +249,7 @@ void quicksort( vector<Comparable> & a, int left, int right )
  * Quicksort algorithm (driver).
  */
 template <typename Comparable>
-void quicksort( vector<Comparable> & a )
+void quicksort( vector<Comparable> & a, Comparator less_than )
 {
     quicksort( a, 0, a.size( ) - 1 );
 }
