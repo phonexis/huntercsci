@@ -63,7 +63,7 @@ vector<int> GenerateSortedVector(size_t size_of_vector, bool smaller_to_larger) 
 template <typename Comparable, typename Comparator>
 bool VerifyOrder(const vector<Comparable> &input, Comparator less_than) {
   // Add code
-  if (typeid(Comparator) == less_than) {
+  if ( typeid(Comparator) == typeid(greater<int>) ) {
     for(int i = 0; i < input.size(); i++) {
       if(input[i] < input[i+1]) {
 	return false;
@@ -110,6 +110,7 @@ void sortTestingWrapper(int argc, char **argv) {
 
   cout << "Running sorting algorithms: " << input_type << " " << input_size << " numbers " << comparison_type << endl;
   vector<int> input_vector;
+  int less_than; //if not less than, then 1.
   if (input_type == "random") {
     // Generate random vector
     input_vector = GenerateRandomVector(input_size);
@@ -124,6 +125,30 @@ void sortTestingWrapper(int argc, char **argv) {
     }
   }
 
+
+  if (comparison_type == "less") { //less -> great
+    for (int x: input_vector) {
+      cout << x << " ";
+    }
+    cout << endl;
+     MergeSort(input_vector, less<int>{});
+     //QuickSort(input_vector, less<int>{});
+    for (int x: input_vector) {
+      cout << x << " ";
+    }
+    cout << endl;
+  } else if (comparison_type == "greater") { //great -> less
+        for (int x: input_vector) {
+      cout << x << " ";
+    }
+    cout << endl;
+    MergeSort(input_vector, greater<int>{});
+    //QuickSort(input_vector, greater<int>{});
+    for (int x: input_vector) {
+      cout << x << " ";
+    }
+    cout << endl;
+  }
   // Call quicksort / heapsort / mergesort using appropriate input.
   // ...
   // if comparison type is "less" then call 
