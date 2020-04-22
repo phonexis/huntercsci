@@ -44,26 +44,26 @@ void insertionSort( vector<Comparable> & a, int left, int right, Comparator less
 {
     for( int p = left + 1; p <= right; ++p )
     {
-        Comparable tmp = std::move( a[ p ] );
+      Comparable tmp = std::move( a[ p ] ); //copy
         int j;
-	if( typeid(Comparator) == typeid(less<int>) ) {
+	if(typeid(Comparator) == typeid(less<int>)) {
 	  for( j = p; j > left && tmp < a[ j - 1 ]; --j )
             a[ j ] = std::move( a[ j - 1 ] );
+	  a[ j ] = std::move( tmp );
 	} else {
 	  for( j = p; j > left && tmp > a[ j - 1 ]; --j )
-            a[ j - 1 ] = std::move( a[ j ] );
+            a[ j ] = std::move( a[ j - 1 ] );
+	  a[ j ] = std::move( tmp );
 	}
-        a[ j ] = std::move( tmp );
     }
 }
-
 
 
 /**
  * Shellsort, using Shell's (poor) increments.
  */
-template <typename Comparable>
-void shellsort( vector<Comparable> & a )
+template <typename Comparable, typename Comparator>
+void shellsort( vector<Comparable> & a, Comparator less_than )
 {
     for( int gap = a.size( ) / 2; gap > 0; gap /= 2 )
         for( int i = gap; i < a.size( ); ++i )
@@ -71,9 +71,10 @@ void shellsort( vector<Comparable> & a )
             Comparable tmp = std::move( a[ i ] );
             int j = i;
 
-            for( ; j >= gap && tmp < a[ j - gap ]; j -= gap )
-                a[ j ] = std::move( a[ j - gap ] );
-            a[ j ] = std::move( tmp );
+	    for( ; j >= gap && tmp < a[ j - gap ]; j -= gap )
+	      a[ j ] = std::move( a[ j - gap ] );
+	    a[ j ] = std::move( tmp );
+	   
         }
 }
 
@@ -228,26 +229,16 @@ void MergeSort( vector<Comparable> & a, Comparator less_than )
  * Return median of left, center, and right.
  * Order these and hide the pivot.
  */
-template <typename Comparable, typename Comparator>
-const Comparable & median3( vector<Comparable> & a, int left, int right, Comparator less_than )
+template <typename Comparable>
+const Comparable & median3( vector<Comparable> & a, int left, int right)
 {
     int center = ( left + right ) / 2;
-
-    if(typeid(Comparator) == typeid(less<int>)) {
-      if( a[ center ] < a[ left ] )
-        std::swap( a[ left ], a[ center ] );
-      if( a[ right ] < a[ left ] )
-        std::swap( a[ left ], a[ right ] );
-      if( a[ right ] < a[ center ] )
-        std::swap( a[ center ], a[ right ] );
-    } else {
-      if( a[ center ] > a[ left ] )
-        std::swap( a[ left ], a[ center ] );
-      if( a[ right ] > a[ left ] )
-        std::swap( a[ left ], a[ right ] );
-      if( a[ right ] > a[ center ] )
-        std::swap( a[ center ], a[ right ] );
-    }
+    if( a[ center ] < a[ left ] )
+      std::swap( a[ left ], a[ center ] );
+    if( a[ right ] < a[ left ] )
+      std::swap( a[ left ], a[ right ] );
+    if( a[ right ] < a[ center ] )
+      std::swap( a[ center ], a[ right ] );
         // Place pivot at position right - 1
     std::swap( a[ center ], a[ right - 1 ] );
     return a[ right - 1 ];
@@ -265,26 +256,26 @@ void quicksort( vector<Comparable> & a, int left, int right, Comparator less_tha
 {
     if( left + 10 <= right )
     {
-      const Comparable & pivot = median3( a, left, right, less_than );
+        const Comparable & pivot = median3( a, left, right );
 
             // Begin partitioning
         int i = left, j = right - 1;
         for( ; ; )
         {
-	  if( typeid(Comparator) == typeid(less<int>) ) {
-	    while( a[ ++i ] < pivot ) { }
-	    while( pivot < a[ --j ] ) { }
-	    if( i < j )
-	      std::swap( a[ i ], a[ j ] );
-	    else
-	      break;
+	  if(typeid(Comparator) == typeid(less<int>)) {
+            while( a[ ++i ] < pivot ) { }
+            while( pivot < a[ --j ] ) { }
+            if( i < j )
+                std::swap( a[ i ], a[ j ] );
+            else
+                break;
 	  } else {
 	    while( a[ ++i ] > pivot ) { }
-	    while( pivot > a[ --j ] ) { }
-	    if( i > j )
-	      std::swap( a[ i ], a[ j ] );
-	    else
-	      break;
+            while( pivot > a[ --j ] ) { }
+            if( i < j )
+                std::swap( a[ i ], a[ j ] );
+            else
+                break;
 	  }
         }
 
