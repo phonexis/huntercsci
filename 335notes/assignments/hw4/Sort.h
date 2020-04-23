@@ -40,21 +40,15 @@ void insertionSort( vector<Comparable> & a )
  * right is the right-most index of the subarray.
  */
 template <typename Comparable, typename Comparator>
-void insertionSort( vector<Comparable> & a, int left, int right, Comparator less_than )
+void insertionSort( vector<Comparable> & a, int left, int right )
 {
     for( int p = left + 1; p <= right; ++p )
     {
       Comparable tmp = std::move( a[ p ] ); //copy
       int j;
-      if(typeid(Comparator) == typeid(less<int>)) {
-	for( j = p; j > left && tmp < a[ j - 1 ]; --j )
-	  a[ j ] = std::move( a[ j - 1 ] );
-	a[ j ] = std::move( tmp );
-      } else {
-	for( j = p; j > left && tmp > a[ j - 1 ]; --j )
-	    a[ j ] = std::move( a[ j - 1 ] );
-	a[ j ] = std::move( tmp );
-      }
+      for( j = p; j > left && tmp < a[ j - 1 ]; --j )
+	a[ j ] = std::move( a[ j - 1 ] );
+      a[ j ] = std::move( tmp );
     }
 }
 
@@ -299,7 +293,7 @@ void quicksort( vector<Comparable> & a, int left, int right, Comparator less_tha
         quicksort( a, i + 1, right, less_than );    // Sort large elements
     }
     else  // Do an insertion sort on the subarray
-      insertionSort( a, left, right, less_than );
+      insertionSort( a, left, right );
 }
 
 /**
