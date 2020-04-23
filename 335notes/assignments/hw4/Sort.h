@@ -45,16 +45,16 @@ void insertionSort( vector<Comparable> & a, int left, int right, Comparator less
     for( int p = left + 1; p <= right; ++p )
     {
       Comparable tmp = std::move( a[ p ] ); //copy
-        int j;
-	if(typeid(Comparator) == typeid(less<int>)) {
-	  for( j = p; j > left && tmp < a[ j - 1 ]; --j )
-            a[ j ] = std::move( a[ j - 1 ] );
-	  a[ j ] = std::move( tmp );
-	} else {
-	  for( j = p; j > left && tmp > a[ j - 1 ]; --j )
-            a[ j ] = std::move( a[ j - 1 ] );
-	  a[ j ] = std::move( tmp );
-	}
+      int j;
+      if(typeid(Comparator) == typeid(less<int>)) {
+	for( j = p; j > left && tmp < a[ j - 1 ]; --j )
+	  a[ j ] = std::move( a[ j - 1 ] );
+	a[ j ] = std::move( tmp );
+      } else {
+	for( j = p; j > left && tmp > a[ j - 1 ]; --j )
+	    a[ j ] = std::move( a[ j - 1 ] );
+	a[ j ] = std::move( tmp );
+      }
     }
 }
 
@@ -79,21 +79,6 @@ void shellsort( vector<Comparable> & a, Comparator less_than )
 }
 
 /**
- * Standard heapsort.
- */
-template <typename Comparable, typename Comparator>
-void heapsort( vector<Comparable> & a, Comparator less_than )
-{
-    for( int i = a.size( ) / 2 - 1; i >= 0; --i )  /* buildHeap */
-        percDown( a, i, a.size( ) );
-    for( int j = a.size( ) - 1; j > 0; --j )
-    {
-        std::swap( a[ 0 ], a[ j ] );               /* deleteMax */
-        percDown( a, 0, j );
-    }
-}
-
-/**
  * Internal method for heapsort.
  * i is the index of an item in the heap.
  * Returns the index of the left child.
@@ -109,23 +94,52 @@ inline int leftChild( int i )
  * i is the position from which to percolate down.
  * n is the logical size of the binary heap.
  */
-template <typename Comparable>
-void percDown( vector<Comparable> & a, int i, int n )
+template <typename Comparable, typename Comparator>
+void percDown( vector<Comparable> & a, int i, int n, Comparator less_than )
 {
     int child;
     Comparable tmp;
 
-    for( tmp = std::move( a[ i ] ); leftChild( i ) < n; i = child )
-    {
-        child = leftChild( i );
-        if( child != n - 1 && a[ child ] < a[ child + 1 ] )
+    if(typeid(Comparator) == typeid(less<int>)) {
+      for( tmp = std::move( a[ i ] ); leftChild( i ) < n; i = child )
+	{
+	  child = leftChild( i );
+	  if( child != n - 1 && a[ child ] < a[ child + 1 ] )
             ++child;
-        if( tmp < a[ child ] )
+	  if( tmp < a[ child ] )
             a[ i ] = std::move( a[ child ] );
-        else
+	  else
             break;
+	}
+      a[ i ] = std::move( tmp );
+    } else {
+      for( tmp = std::move( a[ i ] ); leftChild( i ) < n; i = child )
+	{
+	  child = leftChild( i );
+	  if( child != n - 1 && a[ child ] > a[ child + 1 ] )
+            ++child;
+	  if( tmp > a[ child ] )
+            a[ i ] = std::move( a[ child ] );
+	  else
+            break;
+	}
+      a[ i ] = std::move( tmp );
     }
-    a[ i ] = std::move( tmp );
+}
+
+/**
+ * Standard heapsort.
+ */
+template <typename Comparable, typename Comparator>
+void HeapSort( vector<Comparable> & a, Comparator less_than )
+{
+    for( int i = a.size( ) / 2 - 1; i >= 0; --i )  /* buildHeap */
+      percDown( a, i, a.size( ), less_than );
+    for( int j = a.size( ) - 1; j > 0; --j )
+    {
+        std::swap( a[ 0 ], a[ j ] );               /* deleteMax */
+        percDown( a, 0, j, less_than );
+    }
 }
 
 /**
@@ -230,7 +244,7 @@ void MergeSort( vector<Comparable> & a, Comparator less_than )
  * Order these and hide the pivot.
  */
 template <typename Comparable>
-const Comparable & median3( vector<Comparable> & a, int left, int right)
+const Comparable & median3( vector<Comparable> & a, int left, int right )
 {
     int center = ( left + right ) / 2;
     if( a[ center ] < a[ left ] )
@@ -239,7 +253,7 @@ const Comparable & median3( vector<Comparable> & a, int left, int right)
       std::swap( a[ left ], a[ right ] );
     if( a[ right ] < a[ center ] )
       std::swap( a[ center ], a[ right ] );
-        // Place pivot at position right - 1
+    // Place pivot at position right - 1
     std::swap( a[ center ], a[ right - 1 ] );
     return a[ right - 1 ];
 }
@@ -256,7 +270,7 @@ void quicksort( vector<Comparable> & a, int left, int right, Comparator less_tha
 {
     if( left + 10 <= right )
     {
-        const Comparable & pivot = median3( a, left, right );
+      const Comparable & pivot = median3( a, left, right );
 
             // Begin partitioning
         int i = left, j = right - 1;
@@ -278,7 +292,7 @@ void quicksort( vector<Comparable> & a, int left, int right, Comparator less_tha
                 break;
 	  }
         }
-
+	
         std::swap( a[ i ], a[ right - 1 ] );  // Restore pivot
 
         quicksort( a, left, i - 1, less_than );     // Sort small elements

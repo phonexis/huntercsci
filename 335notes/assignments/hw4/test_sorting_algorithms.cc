@@ -132,7 +132,8 @@ void sortTestingWrapper(int argc, char **argv) {
     }
     cout << endl;
     //MergeSort(input_vector, less<int>{});
-    QuickSort(input_vector, less<int>{});
+    //QuickSort(input_vector, less<int>{});
+    HeapSort(input_vector, less<int>{});
     for (int x: input_vector) {
       cout << x << " ";
     }
@@ -143,7 +144,8 @@ void sortTestingWrapper(int argc, char **argv) {
     }
     cout << endl;
     //MergeSort(input_vector, greater<int>{});
-    QuickSort(input_vector, greater<int>{});
+    //QuickSort(input_vector, greater<int>{});
+    HeapSort(input_vector, greater<int>{});
     for (int x: input_vector) {
       cout << x << " ";
     }
