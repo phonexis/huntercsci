@@ -1,5 +1,6 @@
 // Code from textbook
 // Modified by: Emily Fang
+// CSCI 335
 
 #ifndef SORT_H
 #define SORT_H
