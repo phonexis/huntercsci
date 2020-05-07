@@ -279,7 +279,7 @@ void quicksort2( vector<Comparable> & a, int left, int right, Comparator less_th
 	//j does not need to be right - 1 because our pivot is not at that index
         for( ; ; )
         {
-	  while( less_than(a[ ++i ], pivot ) ) { }
+	  while( less_than(a[ ++i ], pivot ) && i < right ) { }
 	  while( less_than(pivot, a[ --j ] ) ) { }
 	  if( i < j )
 	    std::swap( a[ i ], a[ j ] );
@@ -325,7 +325,7 @@ void quicksort3( vector<Comparable> & a, int left, int right, Comparator less_th
       //j does not need to be right - 1 because our pivot is not at that index
       for( ; ; )
         {
-	  while( less_than(a[ ++i ], pivot ) ) { }
+	  while( less_than(a[ ++i ], pivot ) && i < right ) { }
 	  while( less_than(pivot, a[ --j ] ) ) { }
 	  if( i < j )
 	    std::swap( a[ i ], a[ j ] );
