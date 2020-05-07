@@ -49,23 +49,19 @@ int pathfindDriver(int argc, char **argv) {
   graph_file.close();
   
   int starting_vertex = std::stoi(argv[2]);
-  std::cout << starting_vertex << std::endl;
-  
-  graph.printTable();
-  std::cout << "BEFORE^" << "\n\n";
-  
   graph.dijkstra(starting_vertex);
 
-  graph.printTable();
-  std::cout << "AFTER^" << "\n\n";
   for(auto it = graph.begin(); it != graph.end(); ++it) {
     Vertex * v = graph.table_vertex(it->first);
     std::cout << it->first << ": ";
-    graph.printPath(v);
-    std::cout << " cost: " << graph.cost(it->first);
-    std::cout << "\n";
+    if(graph.possible(starting_vertex,v)) {
+      graph.printPath(v);
+      std::cout << " cost: " << graph.cost(it->first);
+      std::cout << "\n";
+    } else {
+      std::cout << "not_possible" << std::endl;
+    }
   } 
-  
   return 0;
 }
 

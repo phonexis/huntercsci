@@ -17,10 +17,6 @@ struct Vertex {
   bool known = false;
   double distance;
   Vertex * path;
-
-  inline bool operator<(const Vertex& rhs) {
-    return distance < rhs.distance;
-  }
 };
 
 class Graph {
@@ -105,6 +101,18 @@ class Graph {
     }
   }
 
+  bool possible(int starting_vertex, Vertex * v) {
+    if(v->path == nullptr) {
+      if(v->vertex == starting_vertex) {
+	return true;
+      } else {
+	return false;
+      }
+    } else {
+      return possible(starting_vertex,v->path);
+    }
+  }
+  
   void printPath( Vertex* v ) {
     if(v->path != nullptr) {
       printPath(v->path);
@@ -121,29 +129,31 @@ class Graph {
       table.insert(std::make_pair(index,v));
     }
 
-    BinaryHeap<Vertex*> priority_queue;
+    BinaryHeap<int> priority_queue;
     table[starting_vertex].distance = 0;
-    Vertex * start = & table[starting_vertex];
-    priority_queue.insert(start);
+    //Vertex * start = & table[starting_vertex];
+    priority_queue.insert(starting_vertex);
     
     while(!priority_queue.isEmpty()) {
-      Vertex* v = priority_queue.findMin();
-      std::cout << "\n" << v->vertex << std::endl;
-      v->known = true;
+      int v = priority_queue.findMin();
+      table[v].known = true;
       priority_queue.deleteMin();
       
-      std::cout << "Adjacency" << std::endl;
-      for(auto w: v->adjacent_vertices) {
-	std::cout << w.first << std::endl;
+      for(auto w: table[v].adjacent_vertices) {
+	double path_cost = w.second;
 	if(table[w.first].known == false) {
-	  double path_cost = w.second;
-	  if(v->distance + path_cost < table[w.first].distance) {
+	  if(table[v].distance + path_cost < table[w.first].distance) {
 	    //UPDATE W
 	    Vertex * w_pointer = & table[w.first];
-	    priority_queue.insert(w_pointer);
-	    w_pointer->distance = v->distance + path_cost;
-	    w_pointer->path = v;
+	    priority_queue.insert(w.first);
+	    w_pointer->distance = table[v].distance + path_cost;
+	    w_pointer->path = & table[v];
 	  }
+	} else if(table[w.first].known == true && table[v].distance + path_cost < table[w.first].distance) {
+	  Vertex * w_pointer = & table[w.first];
+	  priority_queue.insert(w.first);
+	  w_pointer->distance = table[v].distance + path_cost;
+	  w_pointer->path = & table[v];
 	}
       }
       
